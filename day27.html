@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//利用创建函数的方式来创建pi()函数
+			
+			console.time("test");
+			
+			//先创建一个判断是否是素数的函数,记为d(n)
+			function d(n){
+				var flag = true;//默认是素数
+				if(n<=1){
+					return(0);
+				}
+				for(var i=2 ; i<=Math.sqrt(n) ; i++){
+					if(n % i == 0){
+						flag = false;//如果被整出,那么就不是素数
+						break;
+					}
+				}
+				if(flag){
+					return(1);//如果是素数,就返回1
+				}else{
+					return(0);//不是素数就返回0
+				}
+			}
+			//console.log(d(98));
+			
+			//借助d(n)函数来创建pi(n)函数
+			function pi(n){
+				var sum = 0;//创建sum用来统计素数的个数
+				for(var i=1 ; i<=n ; i++){
+					sum = sum + d(i);//是素数就累加统计个数
+					//console.log(d(i));
+				}
+				return(sum);
+			}
+			//console.log(pi(11));
+			
+			//创建用来描述素数和位置之间的函数p(n)
+			//通过位置来直接获取相应的素数
+			function p(n){
+				var count = 0;
+				var num = 0;
+				for(var i=1 ; true ; i++){
+					if(d(i) == 1){
+						count++;
+					}
+					if(count == n){
+						num = i;
+						break;
+					}
+				}
+				return(num);
+			}
+			//console.log(p(10));
+			
+			//创建描述孪生素数的函数r(n)
+			//r(n)的定义是在n对素数中的孪生素数的个数
+			//借助p(n)函数
+			function r(n){
+				var sum = 0;//用sum来统计孪生素数的个数
+				for(var i=1 ; i<=n; i++){
+					if(p(i+1) - p(i) == 2){
+						sum++;//如果是孪生素数,就自增
+					}
+				}
+				return(sum);
+			}
+			
+			//通过测试发现孪素数函数r(n)和素数函数pi(n)的数值近似相等
+			//于是猜想,随着n的增大,如果极限存在,那么会有 r(n) ~ pi(n)
+			//这个猜想很可能是成立的
+			/* var a = 3000;
+			console.log(r(a));
+			console.log(pi(a)); */
+			//for(var i=1 ; i<=20000 ; i++){
+				//var num1 = pi(i);
+				//var num2 = r(i);
+				/* if(num >= 1){
+					console.log(num+"----大于1");
+				}else{
+					console.log(num+"----小于1");
+				} */
+				//console.log(num1);
+				//document.write(num1+",");
+				//document.write(num2+",");
+				//console.log(num2);
+				//document.write(num+"<br />");
+				//在这里,有一个很重要的发现就是,num<0.1,通过统计我感觉这是一个正确的结论
+			//}
+			console.log(r(10000));
+			
+			console.timeEnd("test");
+			
+			//于是就可以得到有无数个孪生素数,孪生素数猜想很可能是正确的命题
+			/* 
+			 *数据分析：
+			 * 由于Math.abs(1-r(n)/pi(n)) < 0.1--->|1-r(n)/pi(n)| < 0.1
+			 * 则有0.9pi(n) < r(n) < 1.1pi(n)
+			 * 因为pi(n)是无限的，所以r(n)也是无限的
+			 * 同样另外一个猜想也很可能会成立：r(n) ~ pi(n)
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//定义一个Person类
+			function Person(name , age , gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+			}
+			
+			Person.prototype.__proto__.toString = function(){
+				return("我是"+this.name+",我"+this.age+"了，我是"+this.gender+"生");
+			};
+			//创建一个Person类的实例per
+			var per = new Person("tom",20,"男");
+			console.log("per = "+per);
+			console.log(per);
+			
+			var result = per.toString();
+			console.log("result = "+result);//result = [object object]
+			//当我们在页面打印一个对象时,实际上是输出对象的toString()方法的返回值
+			//如果希望输出对象时不输出[object object],可以为对象添加一个toString()方法
+			/* Person.prototype.toString = function(){
+				return("我是"+this.name+",我"+this.age+"了，我是"+this.gender+"生");
+			}; */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

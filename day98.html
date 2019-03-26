@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				function getStyle(obj,name){
+					return(getComputedStyle(obj,null)[name]);
+				}
+				
+				var btn01 = document.getElementById("btn01");
+				var box1 = document.getElementById("box1");
+				var btn02 = document.getElementById("btn02");
+				//点击以后
+				btn01.onclick = function(){
+					
+					move(box1,800,20);
+					
+				};
+				
+				btn02.onclick = function(){
+					
+					move(box1,0,20);
+					
+				};
+				
+				//开启一个定时器
+				/* var count = 0;
+				var len = 2; */
+				//clearInterval(timer);//没开启一个定时器要把上一个定时器关掉
+				
+				//timer = setInterval(function(){
+					
+					/* count++;
+					box1.style.left = count*len + "px"; */
+					//var oldValue = getStyle(box1,"left");
+					//console.log(oldValue);
+					//如果不初始化left,那么在读取left的值显示的就是auto,而auto转换成数字是NaN
+					//从而无法进行计算
+					//var newValue = parseInt(oldValue) + 20;
+					//box1.style.left = newValue + "px";
+					
+					//如果想让它在大于800px的时候落在800px的线上,可以这样
+					//if(newValue >= 800){
+						//box1.style.left = "800px";//大于800px时就令它等于800px
+						//clearInterval(timer);
+					//}
+					
+				//},30);
+				var timer;
+				function move(obj,target,speed){
+					
+					clearInterval(timer);
+					
+					timer = setInterval(function(){
+						
+						var oldValue = parseInt(getStyle(box1,"left"));
+						if(oldValue < target){
+							var newValue = oldValue + speed;
+							box1.style.left = newValue + "px";
+							if(newValue >= target){
+								box1.style.left = target + "px";
+								clearInterval(timer);
+							}
+						}
+						if(oldValue > target){
+							var newValue = oldValue - speed;
+							box1.style.left = newValue + "px";
+							if(newValue <= target){
+								box1.style.left = target + "px";
+								clearInterval(timer);
+							}
+						}
+					},30);
+					
+				};
+				
+				
+				
+				
+			};
+			
+			
+		</script>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				position: absolute;
+				left: 0;
+			}
+			/* 由于 */
+		</style>
+		
+	</head>
+	<body>
+		
+		<button id="btn01">点击按钮以后box1向右移动</button>
+		<br />
+		<button id="btn02">点击按钮以后box1向左移动</button>
+		<br /><br />
+		<div id="box1"></div>
+		<div style="width: 0;height: 1000px;border-left: 1px black solid;position: absolute;left: 800px;"></div>
+		
+	</body>
+</html>

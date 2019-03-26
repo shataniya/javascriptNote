@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+				 *	当鼠标在areaDiv移动的时候，在showMsg中显示鼠标坐标的位置
+				 * 
+				 */
+				
+				//获取两个div
+				var areaDiv = document.getElementById("areaDiv");
+				var showMsg = document.getElementById("showMsg");
+				
+				/* 
+				 *	onmousemove
+				 * 		该事件将会在鼠标在元素中被移动时被触发，而鼠标在元素外的时候不会被触发
+				 * 
+				 * 	事件对象
+				 * 		当事件的响应函数被触发时，浏览器每次都会将事件对象作为一个实参传递进响应函数
+				 * 			在事件对象中封装了当前事件相关的一切信息，比如，鼠标的坐标，键盘哪个按键
+				 * 			被按下，鼠标滚轮滚动的方向等等
+				 */
+				
+				areaDiv.onmousemove = function(event){
+					//alert(event);//每一次触发都是一个事件
+					/* 
+					 *	clientX
+					  * 	可以获取鼠标指针的水平坐标
+					  * clientY
+					  * 	可以获取鼠标指针的垂直坐标
+					 */
+					
+					/* 
+					 *	可以看到IE8及以下浏览器不会把事件对象当做一个实参进行传递
+					 * 	通过测试，可以看见火狐浏览器不识别window.event,但是IE识别
+					 * 	window.event,谷歌这两个都是识别，为了兼容所有的浏览器，可
+					 * 	这样：
+					 */
+					
+					/* if(!event){
+						event = window.event;//如果不识别event,那么就把window.event赋给event
+					} */
+					//不想采用if_else语句的话,也可以这样:
+					event = event || window.event;
+					//用或语句，这样更简单,更方便
+					
+					var x = event.clientX;
+					var y = event.clientY;
+					
+					//在showMsg中显示鼠标坐标
+					showMsg.innerHTML = "x = "+x+", y = "+y;
+					
+				}
+				
+			}
+			
+		</script>
+		<style type="text/css">
+			
+			#areaDiv{
+				width: 200px;
+				height: 100px;
+				background-color: aqua;
+			}
+			
+			#showMsg{
+				width: 200px;
+				height: 30px;
+				background-color: yellow;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="areaDiv"></div>
+		<div id="showMsg"></div>
+	</body>
+</html>

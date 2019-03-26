@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style type="text/css">
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				/* 
+				 *	当滚轮向下滚动式，box1变长
+				 * 	当滚轮向上滚动式，box1变短
+				 */
+				var box1 = document.getElementById("box1");
+				
+				//首先得知道滚轮滚没滚
+				//为box1绑定一个滚轮滚动的事件 onmousewheel
+				/* 
+				 *	onmousewheel 事件会在鼠标滚轮滚动时触发，但是火狐浏览器不支持
+				 * 	在火狐浏览器要使用DOMMouseScroll
+				 * 		注意该事件需要通过addEventListener()函数来绑定
+				 */
+				box1.onmousewheel = function(event){
+					event = event || window.event;
+					//要判断鼠标滚轮滚动的方向
+					/* 
+					 *	event.wheelDelta 可以获取鼠标滚轮滚动的方向
+					 *		往上滚是120
+					 * 		往下滚是-120
+					 * 		这个值不看大小，只看正负，正的就是向上滚，负的就是向下滚
+					 * 	这个属性火狐不支持
+					 * 	在火狐中使用detail来判断滚轮的方向
+					 * 		向上滚是-3，向下滚是3
+					 */
+					if(event.wheelDelta > 0){
+						//alert("向上滚");
+						//当滚轮向上滚动式，box1变短
+						box1.style.height = box1.clientHeight - 10 + "px";
+						
+					}else{
+						//alert("向下滚");
+						//当滚轮向下滚动式，box1变长
+						box1.style.height = box1.clientHeight + 10 + "px";
+						
+					}
+					
+					/* 
+					 *	当滚轮滚动时，如果浏览器有滚动条，滚动条会滚动
+					 * 	这是浏览器的默认行为，如果不希望浏览器出现默认行为，就取消默认行为
+					 */
+					//这种方法很巧妙
+					event.preventDefault && event.preventDefault();
+					
+					return(false);//return(false)可以专门用来取消浏览器的默认行为
+					
+					//event.preventDefault();//也是专门用来取消浏览器的默认行为
+					//但是IE8不支持这种默认行为
+					
+					
+				};
+				
+			};
+			
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box1"></div>
+	</body>
+</html>

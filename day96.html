@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				position: absolute;/* 开启定位 */
+			}
+		</style>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var box1 = document.getElementById("box1");
+				
+				//创建一个控制div移动的函数,只控制速度,不控制方向
+				var dir = 0;
+				var speed;
+				setInterval(function(){
+					
+					switch(dir){
+						case 65:box1.style.left = box1.offsetLeft - speed + "px";break;//A
+						case 68:box1.style.left = box1.offsetLeft + speed + "px";break;//D
+						case 87:box1.style.top = box1.offsetTop - speed + "px";break;//W
+						case 83:box1.style.top = box1.offsetTop + speed + "px";break;//S
+					}
+					
+					/* 
+					 *	因为在未提供方向的时候，div是不断的执行的，因此就取消了第一次按下的时候的延迟
+					 */
+					
+				},50);
+				
+				//当按键按下时,只是给dir提供方向值
+				document.onkeydown = function(event){
+					
+					event = event || window.event;
+					speed = 20;
+					dir = event.keyCode;
+					
+				};
+				
+				//当按键松开的时候,立即停止
+				document.onkeyup = function(event){
+					
+					event = event || window.event;
+					speed = 0;
+					dir = 0;
+					
+				}
+				
+				/* 
+				 *	div移动之所以会延迟的原因是因为,当按键按下的时候,它控制了方向和速度,按键控制方向肯定是
+				 *	不会产生延迟的,唯一的原因就是速度产生了延迟，那为什么速度会产生延迟呢，很简单，因为按键
+				 * 	按下的时候为了防止误操作，按下第一下之后（保持按下的状态）首先会出现一个值，经过一个短时间
+				 * 	间隔之后才会出现第二个值，第三个值一直往后，它我们想象的那样当按键一按下之后不存在短暂间隔
+				 * 	连续出现很多个值，正是这个防止误操作的短暂时间间隔，才导致了速度的短暂暂停，因此会出现连续
+				 * 	按下之后，移动了一下，然后短暂暂停，才会往后连续移动
+				 * 
+				 * 	为了解决根本问题，不能让按键控制速度，只需要按键控制方向，因此需要定义一个定时器函数来让
+				 * 	div不断地处于执行状态
+				 */
+				
+			};
+			
+		</script>
+		
+	</head>
+	<body>
+		<div id="box1"></div>
+	</body>
+</html>

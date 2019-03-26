@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//当多个对象具有相同的属性的时候，如何大量创建对象
+			//通过定义函数的方法批量生产
+			function createObj(name,age,gender){
+				var obj = new Object();
+				obj.name = name;
+				obj.age = age;
+				obj.gender = gender;
+				obj.sayName = function(){
+					alert(this.name);
+				};
+				return(obj);
+			}
+			var obj = createObj("zhangsan",20,"man");
+			//console.log(obj);
+			//obj.sayName();
+			
+			//创建一个狗的对象
+			function createDog(name , age){
+				var dog = new Object();
+				dog.name = name;
+				dog.age = age;
+				dog.sayHello = function(){
+					alert("汪汪~~~");
+				};
+				return(dog);
+			}
+			
+			var dog1 = createDog("旺财",4);
+			//console.log(dog1);
+			//dog1.sayHello();
+			
+			/* 
+			 *根据运行结果可以看到：
+			 *	由于人和狗都是运用工厂的方法来创建的，于是人和狗都是object的类型
+			 * 	因此我们无法判断是人还是狗
+			 *我们更希望创建人的时候是用这样的方法实现的：
+			 * 	var per = new Person();
+			 *同时也希望创建狗的时候是用这样的方法实现的：
+			 * 	var dog = new Dog();
+			 *该怎么办呢？？
+			 */
+			
+			/* 
+			 *那就可以构造一个函数，专门用来创建Person的
+			 * 	构造函数就是一个普通的函数，创建方式和创建普通函数的方式没有区别
+			 * 	不同的是构造函数习惯用首字母大写
+			 * 	很重要的一点，构造函数没有返回值
+			 * 	构造函数中的 this 指的就是新建的对象
+			 * 
+			 *构造函数和普通函数的区别就是调用方式的不同
+			 * 	普通函数是直接调用的，构造函数需要使用关键字 new 来调用
+			 * 
+			 *构造函数的执行流程
+			 * 	1.当你调用构造函数的时候，会立刻创建一个新的对象
+			 * 	2.将新建的对象设置为函数中的 this，在函数中可以使用this来引用新建的对象
+			 * 	3.逐行执行函数中的代码
+			 * 	4.将这个新的对象作为返回值返回
+			 * 
+			 *构造函数也叫做一个类，通过构造函数创建的对象也叫做这个类的实例
+			 */
+			
+			//创建一个构造函数
+			//构造一个Person的类
+			function Person(name , age , gender){
+				this.name = name;//this指的是新建的对象
+				this.age = age;
+				this.gender = gender;
+				this.sayName = function(){
+					alert(this.name);
+				};
+				//不需要返回
+			}
+			
+			//创建一个Person的对象
+			var per = new Person("李四",20,"男");
+			console.log(per);
+			//per.sayName();
+			
+			//创建一个Dog的类
+			function Dog(name , age){
+				this.name = name;
+				this.age = age;
+				this.sayName = function(){
+					alert(this.name);
+				}
+				//不需要返回值
+			}
+			
+			//创建一个Dog的对象
+			var dog1 = new Dog("汪汪",4);
+			//dog1.sayName();
+			console.log(dog1);
+			
+			//可以很明显的区分类型,一个是Person类,一个是Dog类
+			//不像之前的都是Object类,无法区分
+			
+			//工厂方法和类方法很明显的一个区别就是,工厂方法需要返回值,但是类方法不需要返回值
+			//还有一个区别就是,类的实例的创建需要用 new ,而工厂方法不需要
+			
+			//使用instanceof可以检查一个对象是否是一个类的实例
+			/* 
+			 *语法：
+			 * 		对象 instanceof 构造函数
+			 * 如果是，返回true，如果不是，返回false
+			 */
+			
+			//使用instanceof检查一下dog1是不是Dog类的一个实例
+			console.log(dog1 instanceof Dog);//返回true
+			console.log(dog1 instanceof Person);//返回false
+			//很明显dog1不是Person的实例,因此返回false
+			
+			//如果我用dog2试一试看看是不是Person的实例
+			//console.log(dog2 instanceof Person);//结果是not defined
+			//也就是说dog2未定义,未声明,因此返回的不是false,而是not defined
+			//也就是说instanceof的返回值true和false是相对于已经定义的实例来说的
+			//没有定义,或者说没有声明的实例一律返回not defined
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

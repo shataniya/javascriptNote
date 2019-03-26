@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			function fun(a,b){
+				console.log(this.name);
+				console.log("a = "+a);
+				console.log("b = "+b);
+			}
+			
+			/* 
+			 *call()和apply()
+			 * 	都是函数对象的方法，需要函数对象来调用
+			 * 	当对函数调用call()和apply()方法都会调用函数执行
+			 * 	不同的是，在调用call()和apply()可以将对象指定为第一个参数
+			 * 	call()可以将实参在对象之后依次传递
+			 * 	apply()方法需要将实参封装到一个数组中统一传递
+			 * 
+			 * 	this的情况
+			 * 		1.以函数形式调用时，this是window
+			 * 		2.以方法形式调用时，this是调用方法的对象
+			 * 		3.以构造函数的形式调用时，this新创建的对象
+			 * 		4.使用call()和apply()调用时，this是指定的对象
+			 */
+			
+			var obj = {};
+			obj.name = "张三";
+			obj.sayName = function(){
+				alert(this.name);
+			};
+			
+			var obj2 = {
+				name:"李四"
+			}
+			/* 
+			 *fun.call();
+			 *fun.apply(); 
+			 *fun();
+			 * //这三个函数的功能是一样的
+			 */
+			
+			//fun.call();//object window
+			//fun.call(obj);//object object
+			
+			//obj添加name属性之后
+			//fun.call(obj);//张三
+			//obj.sayName();
+			//obj.sayName.call(obj2);
+			//会发现在obj的原型对象创建sayName()函数,但是obj不能调用,这是为什么
+			//自己总结就是:在原型对象创建函数应该是在类的原型对象才可以,而obj是具体的实例
+			//因此不可以
+			
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			
+			Person.prototype.sayName = function(){
+				alert(this.name);
+			}
+			
+			Person.prototype.toString = function(){
+				alert("我是"+this.name+", 我"+this.age+"岁了");
+			}
+			
+			var per = new Person("tom",18);
+			/* per.sayName();
+			alert(per);
+			console.log(per); */
+			
+			//fun.call(obj,2,3);
+			fun.apply(obj,[2,3]);//apply()里要把实参封装到数组里才能传递
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

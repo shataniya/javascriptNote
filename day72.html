@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	算法思想：
+			 * 		1.初始化一个保存素数的数组，初值默认是2
+			 * 		2.对于n>=3的奇数取平方根，并令sqrt = Math.sqrt(n)，因为偶数肯定不是素数
+			 * 		3.取sqrt范围内的所有素数，挨个检验，如果能整除说明n不是素数，如果不能整除说明n是素数，并把n添加到保存素数的数组里
+			 * 		4.循环反复执行2和3
+			 * 	这样就得到一个保存素数的数组，于是就可以从这个素数数组里找孪生素数了，大大提高了效率
+			 *
+			 */
+			
+			console.time("test");
+			
+			function r(n){
+				
+				//首先创建一个保存素数的数组
+				var priArr = [2];
+				//var mark = 0;
+				//console.log(priArr[0]);
+				for(var i=3 ; true ; i=i+2){
+					
+					//获取平方根
+					var sqrt = Math.sqrt(i);
+					
+					//创建素数标志,默认是素数
+					var flag = true;
+					for(var j=0 ; j<=sqrt ; j++){
+						if(priArr[j] > sqrt){
+							flag = true;
+							break;
+						}
+						if(i % priArr[j] == 0){
+							flag = false;
+							break;
+						}
+					}
+					if(flag){
+						priArr.push(i);
+					}
+					if(priArr.length == n+1){
+						break;
+					}
+				}
+				//console.log(priArr);
+				//找到4001个素数以后,求出相应的差
+				var r = 0;
+				for(var i=0 ; i<priArr.length ; i++){
+					if(priArr[i+1] - priArr[i] == 2){
+						r++;
+					}
+				}
+				
+				return(r);
+				
+			}
+			//console.log(r(4000));
+			/* var twinArr = [];
+			for(var i=1 ; i<=20000 ; i++){
+				twinArr.push(r(i));
+			} */
+			
+			//console.log(twinArr);
+			//document.write(twinArr);
+			//console.log(twinArr.length);
+			//console.log(twinArr[19999]);
+			console.log(r(10000));
+			
+			console.timeEnd("test");
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

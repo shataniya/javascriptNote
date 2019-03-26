@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var box1 = document.getElementById("box1");
+				var btn01 = document.getElementById("btn01");
+				
+				//设置按钮的位置,把它放在正下方
+				btn01.style.left = box1.offsetLeft - btn01.clientWidth + box1.clientWidth/2 + "px";
+				btn01.style.top = box1.offsetTop + box1.clientHeight + "px";
+				btn02.style.left = box1.offsetLeft + box1.clientWidth/2 + "px";
+				btn02.style.top = box1.offsetTop + box1.clientHeight + "px";
+				
+				//点击立即开始按钮,游戏开始
+				btn01.onclick = function(){
+					//alert(box2.clientWidth);
+				};
+				
+			};
+			
+		</script>
+		
+		<style type="text/css">
+			#box1{
+				width: 400px;
+				height: 400px;
+				background-color: aqua;
+				position: absolute;/* 绝对定位 */
+				left: 50%;/* 把div原点移到window页面水平中央 */
+				top: 50%;/* 把div原点移到window页面垂直中央 */
+				margin-top: -200px;/* 上移50% */
+				margin-left: -200px;/* 左移50% */
+			}
+			
+			#box2{
+				
+			}
+			
+			#btn01{
+				position: absolute;
+			}
+			
+			#btn02{
+				position: absolute;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="box2"></div>
+			<div id="box3"></div>
+		</div>
+		<button id="btn01">立即开始</button>
+		<button id="btn02">重新开始</button>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	在底层字符串是以字符数组的形式保存的
+			 * 	一个字符就是字符数组里的一个元素
+			 * 	length
+			 * 		可以获取字符串的长度
+			 * 	
+			 * 	charAt()
+			 * 		返回指定位置的字符
+			 * 
+			 * 	charCodeAt()
+			 * 		获取指定位置的字符编码，返回的是unicode的编码
+			 * 
+			 * 	formCharCode()
+			 * 		可以根据编码（Unicode编码）去获取字符
+			 * 		用法：用String去调用formCharCode()方法
+			 * 		即  String.formCharCode()
+			 */
+			
+			//创建一个字符串
+			//var str = "hello china";
+			//console.log(str.length);//11个字符,空格也是一个字符
+			//document.write(str.bold()+"<br />");//粗体显示
+			//document.write(str.big()+"<br />");//大号字体显示
+			//document.write(str.blink());//闪动字体显示
+			
+			//console.log(str.charAt(0));//h
+			//console.log(str.charAt(2));//l
+			
+			//console.log(str.charCodeAt(0));//104,h的Unicode编码是104
+			
+			//var str2 = "nihao";
+			
+			/* 
+			 *	concat()
+			 * 		连接两个或多个字符串
+			 * 
+			 * 	indexof()
+			 * 		从前往后找
+			 * 		检索一个字符中是否含有指定内容
+			 * 		如果有，就返回指定字符出现的第一个索引
+			 * 		如果没有，就返回-1
+			 * 		可以指定第二个参数，表示从这个参数（索引）开始查找
+			 * 
+			 * 	lastIndexOf()
+			 * 		从后往前找
+			 * 		检索一个字符中是否含有指定内容
+			 * 		如果有，就返回指定字符出现的第一个索引
+			 * 		如果没有，就返回-1
+			 * 		也可以指定第二个参数，表示从这个参数（索引）开始查找
+			 * 
+			 */
+			
+			var result = String.fromCharCode(1040);//h
+			//result = str.concat(str2,"zhangsan"," ","meili");
+			//result = str2.indexOf("h");//2
+			//result = str.lastIndexOf("h");//7
+			
+			/* 
+			 *	slice()
+			 * 		可以从字符串中截取指定的内容
+			 * 		不会影响原字符串，而是返回截取的内容
+			 * 		参数：
+			 * 			1.开始位置的索引（包括）
+			 * 			2.结束位置的索引（不包括）
+			 * 				如果省略第二个参数，则会截取后边所有
+			 * 				如果是负数，-1就是倒数第一位，-2就是倒数第二位
+			 * 
+			 * 	substring()
+			 * 		可以用来截取一个字符串，和slice()类似
+			 * 		参数：
+			 * 			1.开始位置的索引（包括）
+			 * 			2.结束位置的索引（不包括）
+			 * 		不同的是，这个方法不能接受负数，如果遇到负数，就默认是0
+			 * 		而且还会自动调整参数的位置，如果第二个参数小于第一个参数，会自动交换
+			 * 
+			 * 	substr()//了解就行，一般最好不要用
+			 * 		可以用来截取一个字符串
+			 * 		参数：
+			 * 			1.开始位置的索引（包括）
+			 * 			2.截取的长度
+			 */
+			var str = "sheng,hua,wei,ji";
+			var s = str.substr(1,4);//heng
+			s = str.substring(1,-1);//s
+			s = str.slice(1,4);//hen
+			
+			/* 
+			 *	split()
+			 * 		可以将一个字符串拆分成一个数组
+			 * 		参数：拆分的标志
+			 * 
+			 * 	toUpperCase()
+			 * 		把字符串变成大写并返回
+			 * 
+			 * 	toLowerCase()
+			 * 		把字符串变成小写并返回
+			 */
+			
+			s = str.split(",");
+			//console.log(s);//["sheng", "hua", "wei", "ji"]
+			//console.log(typeof s);//object
+			//console.log(Array.isArray(s));//true
+			//console.log(s[2]);//wei
+			//console.log(s.length);//4
+			
+			s = str.toUpperCase();//SHENG,HUA,WEI,JI
+			s = str.toLowerCase();//sheng,hua,wei,ji
+			//console.log(s);
+			
+			var str2 = "oiuiyutdrdt";
+			var re = str2.split("");//以空串来拆分
+			console.log(re);//["o", "i", "u", "i", "y", "u", "t", "d", "r", "d", "t"]
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

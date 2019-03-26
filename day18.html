@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//求pi(x)函数,也就是统计素数个数的函数
+			while(true){
+				var input = +prompt("输入一个数值：");
+				if(input <= 1 || isNaN(input)){
+					alert("数入不合法！");
+				}else{
+					break;
+				}
+			}
+			var sum = 0;//统计素数的个数
+			for(var i = 2 ; i <= input ; i++){
+				var flag = 1;//默认是素数
+				for(var j = 2 ; j < i ; j++){
+					if(i % j == 0){
+						flag = 0;//一旦被整除,标志为不是素数
+					}
+				}
+				if(flag){
+					sum = sum + flag;
+				}else{
+					sum = sum + flag;
+				}
+			}
+			alert("pi("+input+")  = "+sum);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

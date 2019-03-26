@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//这种一个一个绑定单击响应事件的方式不方便,建议不使用
+				/* var arr = document.getElementsByTagName("a");
+				for(var i=0 ; i<arr.length ; i++){
+					arr[i].onclick = function(){
+						alert("我是超链接");
+					}
+				} */
+				
+				
+				var u1 = document.getElementById("u1");
+				var btn01 = document.getElementById("btn01");
+				
+				console.log(btn01);
+				
+				btn01.onclick = function(){
+					//alert("nihao");
+					//alert("jnniaho");
+					var li = document.createElement("li");
+					li.innerHTML = '<a href="javascript:;" class="link">新超链接</a>';
+					u1.appendChild(li);
+					console.log(u1);
+				};
+				
+				/* 
+				 *	只绑定一次事件，即可运用到后面的元素上，即使是后面添加到元素
+				 * 	我们可以尝试绑定在其共同的祖先上
+				 */
+				
+				//为u1绑定一个单击响应事件
+				u1.onclick = function(event){
+					//alert(this);//this给谁绑定就是谁
+					event = event || window.event;
+					//alert(event.target);
+					
+					/* 
+					 *	event中的target就是触发事件的对象，由谁触发，那么target就是谁
+					 */
+					
+					//如果class是link说明是超链接a
+					if(event.target.className == "link"){
+						alert("我是超链接的响应函数");
+					}
+					
+				};
+				
+				/* 
+				 *	事件的委派
+				 * 		就是将事件绑定到他们共同的祖先元素上，就叫做事件的委派
+				 * 	这样当后代元素上的事件触发时，会一直冒泡到祖先元素，从而通过
+				 * 	祖先元素的响应事件函数来处理事件
+				 * 
+				 * 	还见的委派是利用了冒泡，通过事件的委派可以减少事件绑定的次数，可以提高
+				 * 	属性的性能
+				 */
+				
+			};
+			
+		</script>
+		
+		<style type="text/css">
+			
+			#u1{
+				background-color: aqua;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		
+		<button id="btn01">添加超链接</button>
+		
+		<ul id="u1">
+			<li>
+				<p>傻她你呀</p>
+			</li>
+			<li><a href="javascript:;" class="link">超链接1</a></li>
+			<li><a href="javascript:;" class="link">超链接2</a></li>
+			<li><a href="javascript:;" class="link">超链接3</a></li>
+			<li><a href="javascript:;" class="link">超链接4</a></li>
+		</ul>
+		
+	</body>
+</html>

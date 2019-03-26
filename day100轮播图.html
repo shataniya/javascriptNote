@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			/* 设置outer的样式 */
+			#outer{
+				width: 520px;
+				height: 300px;
+				/* 居中 */
+				margin: 50px auto;/* 这里100px指的就是往下移动100px */
+				background-color: greenyellow;
+				/* 设置padding */
+				padding: 10px 0;
+				position: relative;/* 开启相对定位 */
+				/* 剪掉溢出的内容 */
+				overflow: hidden;
+				
+			}
+			/* 设置imglist */
+			#imgList{
+				/* 去除项目符号，就是去除前面的小点*/
+				list-style: none;
+				/* 设置ul的宽度 */
+				/* width: 1560px; */
+				/* 开启绝对定位 */
+				position: absolute;
+				/* 每移动520像素就会显示下一张图片 */
+				left: 0;
+			}
+			#imgList li{
+				/* li肯定是竖着排列的 */
+				/* 设置图片中的li向左浮动，让li横着排列 */
+				float: left;
+				/* 设置左右外边距 */
+				margin: 0 10px;/* 上下为0，左右为10px */
+			}
+			#navDiv {
+				/* 开启绝对定位 */
+				position: absolute;
+				bottom: 15px;
+				/* 设置left */
+			}
+			#navDiv a{
+				/* 设置连接浮动 */
+				float: left;
+				/* 设置超链接的宽和高 */
+				width: 15px;
+				height: 15px;
+				/* 设置背景颜色 */
+				background-color: blue;
+				/* 设置左右外边距 */
+				margin: 0 5px;/* 上下为0，左右是5px */
+				/* 设置透明 */
+				opacity: 0.5;
+				/* 兼容IE8透明 */
+				filter: alpha(opacity=50);
+				
+			}
+			/* 设置鼠标移入的效果 */
+			#navDiv a:hover{
+				background-color: black;
+			}
+				
+			}
+			
+		</style>
+		
+		<script type="text/javascript" src="JS/tools.js">
+			
+		</script>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var imgList = document.getElementById("imgList");
+				
+				//获取页面中所有的图片,也就是所有的img标签
+				var imgArr = document.getElementsByTagName("img");
+				//console.log(imgArr);
+				//设置imgList的宽度
+				imgList.style.width = 520*imgArr.length + "px";
+				
+				var outer = document.getElementById("outer");
+				var navDiv = document.getElementById("navDiv");
+				navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth)/2 + "px";
+				
+				//默认显示图片的索引
+				var index = 0;
+				
+				//获取所有的超链接a
+				var aArr = document.getElementsByTagName("a");
+				
+				//设置默认选中的效果
+				aArr[index].style.backgroundColor = "black";
+				
+				/* 
+				 *	点击超链接就切换到指定的图片
+				 * 		点击第一个超链接，显示第一个图片
+				 * 		点击第二个超链接，显示第二个图片
+				 * 		点击第三个超链接，显示第三个图片
+				 */
+				//为所有的超链接绑定单击响应函数
+				for(var i=0;i<aArr.length;i++){
+					
+					//为每一个超链接都添加一个num属性
+					aArr[i].num = i;
+					
+					//为超链接绑定单击响应函数
+					aArr[i].onclick = function(){
+						
+						/* 我们要关闭定时切换的定时器 */
+						clearInterval(timer1);
+						
+						//alert(this.num);
+						index = this.num;
+						setA();
+						move(imgList,"left",-520*index,20,function(){
+							//一旦执行function,说明动画执行完毕,于是再次开启定时器
+							autoChange();
+						});
+						//修改正在选中的a
+						//setA();
+					};
+				}
+				
+				function setA(){
+					
+					if(index >= imgArr.length-1){
+						index = 0;
+						//一旦进入判断,那么显示的是最后一张图片,而最后一张图片和第一张图片是一模一样的
+						//通过CSS将最后一张图片一下子切换成第一张图片
+						imgList.style.left = "0px";
+					}
+					
+					for(var i=0;i<aArr.length;i++){
+						//内联样式的优先级比样式表的优先级高,所以为了显示样式表里的颜色,内联样式应该
+						//设置为无色,这样JS就会自动去找样式表里的颜色
+						aArr[i].style.backgroundColor = "";
+					}
+					aArr[index].style.backgroundColor = "black";
+				};
+				
+				//创建一个函数来开启自动切换图片
+				var timer1;
+				function autoChange(){
+					
+					timer1 = setInterval(function(){
+						index++;
+						
+						index = index % imgArr.length;
+						move(imgList,"left",-520*index,20,function(){
+							setA();
+						});
+					},3000);
+					
+				};
+				
+				autoChange();
+				
+			};
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		<!-- 创建一个大的div来作为一个大容器 -->
+		<div id="outer">
+			<!-- ul是无序列表 -->
+			<!-- 创建一个ul -->
+			<ul id="imgList">
+				<li><img src="testimg/gb02.jpg" /></li>
+				<li><img src="testimg/gb03.jpg" /></li>
+				<li><img src="testimg/gb04.jpg" /></li>
+				<li><img src="testimg/gb02.jpg" /></li>
+				<!-- 这里最后一张图片和第一张图片是一样的 -->
+			</ul>
+			<!-- 创建导航按钮 -->
+			<div id="navDiv">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+	</body>
+</html>

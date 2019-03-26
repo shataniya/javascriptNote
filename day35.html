@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			//定义一个类my_Class
+			function my_Class(){
+				
+			}//这里不需要分号
+			
+			//向my_Class的原型对象中添加name属性
+			my_Class.prototype.name = "我是原型中的属性~~";
+			var mc = new my_Class();
+			console.log(mc.name);//可以看到mc直接到原型里去找
+			
+			//用in关键字来检查属性是否在对象中
+			//语法:"属性名" in 对象
+			console.log("name" in mc);//true
+			//console.log(name in mc);//属性名要加引号
+			//我们知道name属性是在原型对象protptype中创建的,但是本身mc是没有的
+			//怎么检查mc本身具不具有name属性
+			//可以使用hasOwnProperty()函数来检查
+			//语法: 对象.hasOwnProperty("属性名")
+			console.log(mc.hasOwnProperty("name"));//false
+			//console.log(mc.hasOwnProperty(name));//false,属性名要加引号
+			//于是利用hasOwnProperty()函数就可以知道name属性不是在mc里边的而是在原型对象中
+			mc.age = 18;
+			console.log("age" in mc);//true
+			console.log(mc.hasOwnProperty("age"));//true
+			console.log(mc.__proto__.hasOwnProperty("age"));//false
+			//对象可以通过__proto__来访问原型对象prototype
+			//也就是  对象.__proto__--->prototype
+			/* 
+			 *因为原型对象也是对象，所以原型对象也有原型对象
+			 * 	可以通过  对象._proto_._proto_来访问原型对象的原型对象
+			 */
+			
+			//我想知道hasOwnProperty()函数是不是在原型对象里,可以检验一下
+			console.log(mc.__proto__.hasOwnProperty("hasOwnProperty"));//false
+			//可以知道hasOwnProperty()函数不是在mc的原型对象中的
+			console.log("hasOwnProperty" in mc.__proto__);//true
+			//于是可以看到,原型对象可以用hasOwnProperty()函数,但是hasOwnProperty()函数
+			//不在原型对象中,因此可能在原型对象的原型对象中
+			
+			//检查一下
+			console.log("hasOwnProperty" in mc.__proto__.__proto__);//true
+			console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));//true
+			//说明hasOwnProperty()函数确实在原型对象的原型对象中
+			
+			console.log(mc.__proto__.__proto__.__proto__);//null
+			//一般是两层,也就是对象的原型对象的原型对象
+			
+			//一层一层的往上找,直到object对象的原型,object对象的原型没有原型
+			//如果没找到,就会返回undefined
+			
+			//例子:
+			console.log(mc.hello);//undefined
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

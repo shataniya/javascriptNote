@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(name , age , gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				// this.sayHello = fun;
+			}
+			
+			//于是可以在类的外面声明一个函数fun
+			/* function fun(){
+				console.log("我是"+this.name+",你好~~~");
+			}; */
+			var per1 = new Person("张三",18,"男");
+			//per1.sayHello();
+			var per2 = new Person("李四",20,"男");
+			//per2.sayHello();
+			
+			//检验一下per1.sayHello()与per2.sayHello()是否是一个方法
+			//console.log(per1.sayHello() == per2.sayHello());
+			
+			/* 
+			 *但是在全局作用域中声明一个原本应该在类里边的函数,虽然避免了重复创建
+			 *但是也会造成一些新的问题：
+			 * 	1.它会污染全局作用域的命名环境
+			 * 	2.把它放在全局作用域中很不安全，一旦定义了别的函数并且函数名为fun，那么原本
+			 * 	  的fun函数就会被覆盖了，换句话说就是，之前的fun函数的功能失效了
+			 */
+			
+			//解决方法;
+			/* 
+			 *原型prototype
+			 * 	我们创建的每一个函数，解析器都会向函数中添加一个属性prototype
+			 * 	这个属性对应着一个对象，这个对象就是我们的原型对象
+			 * 	当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含属性
+			 * 		指向该结构函数的原型对象，我们可以通过 _proto_来访问该属性
+			 * 	因此我们可以将所有创建实例，或者说所有创建的对象共有的内容，同意设置到原型对象中
+			 * 
+			 * 当我们访问一个属性或者方法是，它先会在对象的自身中寻找，如果有就直接只用，如果没有
+			 * 	就回去原型对象中寻找，如果有就直接使用
+			 */
+			
+			//举个例子;
+			var per3 = new Person("王五",25,"男");
+			//console.log(per3.prototype);
+			console.log(per3.__proto__);
+			console.log(per3.__proto__ == Person.prototype);//结果是true
+			//因此类的实例通过 _proto_ 访问的属性就是原型对象prototype
+			//创建的实例,或者说创建的对象要访问原型对象prototype,必须要通过 _proto_ 才能访问
+			
+			//向Person的原型对象中添加方法
+			Person.prototype.sayHello = function(){
+				alert("我是"+this.name+",你好~~~");
+			};//这里最好还是要添加分号(;)
+			
+			//使用方法
+			per1.sayHello();
+			per2.sayHello();
+			per3.sayHello();
+			
+			/* 
+			 *总结;
+			 * 	因此在创建一个类的时候，共有的类的属性或者方法要在类的原型对象prototype里创建;
+			 * 	这样不仅不会污染全局作用域的环境，还能避免重复创建
+			 *
+			 *共有的类的属性的创建---语法：
+			 * 	类名.prototype.属性名 = 属性值;
+			 * 
+			 *共有的类方法的创建---语法：
+			 * 	类名.prototype.方法名 = function(){  语句  };
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

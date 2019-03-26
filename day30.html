@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//如果我想知道某一个对象里的所有属性,该怎么办
+			/* 
+			 *可以使用for...in...语句，具体语法：
+			 * 
+			 * for(var 变量 in 对象){
+			 *  	语句...
+			 * }
+			 * 
+			 * 每执行一次就会把对象里的属性名赋值给变量
+			 * 利用函数我们可以把一个对象里的所有属性枚举出来
+			 */
+			var obj = {
+				name:"张三",
+				age:18,
+				gender:"男",
+				address:"大马路"
+			}
+			for(var n in obj){
+				console.log(n);
+				console.log(obj[n]);//利用对象[]的方法来调用所有属性
+			}
+			console.log("~~~~~~~~~~~~~~~~~~~~");
+			//可以试试枚举对象document里的所有属性
+			for(var n in document){
+				console.log(n);//属性名
+				console.log(document[n]);//属性值
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+width:200px;
+height:3
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				hide = function(li){
+					var a = li.getElementsByTagName("ul")[0];
+					a.style.display = "none";
+					
+				}
+				
+				show = function(){
+					var a = li.getElementsByTagName("ul")[0];
+					a.style.display = "block";
+				}
+				
+			}
+			
+			
+		</script>
+		
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="nav" class="nav">
+			<ul id="in" class="in">
+				<li><a href="">首页</a></li>
+				<li><a href="">HTML教程</a>
+					<ul>
+						<li><a href="">HTML</a></li>
+						<li><a href="">HTMLS</a></li>
+						<li><a href="">XHTML</a></li>
+						<li><a href="">CSS</a></li>
+						<li><a href="">CSS3</a></li>
+					</ul>
+				</li>
+				<li onmousemove="show(this)" onmouseout="hide(this)"><a href="">浏览器脚本</a>
+					<ul>
+						<li><a href="">JavaScript</a></li>
+						<li><a href="">HTML DOM</a></li>
+						<li><a href="">Jquery</a></li>
+						<li><a href="">Jquery Mobile</a></li>
+						<li><a href="">Ajax</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">服务器脚本</a>
+					<ul>
+						<li><a href="">PHP</a></li>
+						<li><a href="">SQL</a></li>
+						<li><a href="">ASP</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">XML教程</a>
+					<ul>
+						<li><a href="">XML</a></li>
+						<li><a href="">DTD</a></li>
+						<li><a href="">XML DOM</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">Web Service</a>
+					<ul>
+						<li><a href="">WSDL</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

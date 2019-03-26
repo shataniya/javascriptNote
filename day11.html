@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * prompt()可以弹出一个提示框，该提示框中含有一个文本框
+			 * - 用户可以在文本框中输入一段内容，该函数需要一个字符串作为有个参数
+			 * - 该字符会作为提示框的提示文字
+			 * 
+			 * prompt()的返回值是string
+			 */
+			//if语句的练习
+			var num1 = +prompt("请输入第一个数：");//在字符串前面添加+使字符串转换成number
+			var num2 = +prompt("请输入第二个数：");
+			var num3 = +prompt("请输入第三个数：");
+// 			var max = num1 > num2 ? num1 : num2;
+// 			max = max > num3 ? max : num3;
+// 			var min = num1 < num2 ? num1 : num2;
+// 			min = min < num3 ? min : num3;
+// 			alert("max = " + max);
+// 			alert("min = " + min);
+			if(num1 < num2 && num1 < num3){
+				//num1最小
+				if(num2 < num3){
+					alert(num1+" "+num2+" "+num3);
+				}else{
+					alert(num1+" "+num3+" "+num2);
+				}
+			}else if(num2 < num1 && num2 < num3){
+				//num2最小
+				if(num1 < num3){
+					alert(num2+" "+num1+" "+num3);
+				}else{
+					alert(num2+" "+num3+" "+num1);
+				}
+			}else{
+				//num3最小
+				if(num1 < num2){
+					alert(num3+" "+num1+" "+num2);
+				}else{
+					alert(num3+" "+num2+" "+num1);
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

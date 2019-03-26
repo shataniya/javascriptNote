@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	算法思想：
+			 * 		1.初始化一个保存素数的数组，初值默认是2
+			 * 		2.对于n>=3的奇数取平方根，并令sqrt = Math.sqrt(n)，因为偶数肯定不是素数
+			 * 		3.取sqrt范围内的所有素数，挨个检验，如果能整除说明n不是素数，如果不能整除说明n是素数，并把n添加到保存素数的数组里
+			 * 		4.循环反复执行2和3
+			 * 	这样就得到一个保存素数的数组，大大提高了效率
+			 *
+			 */
+			
+			
+			console.time("test");
+			
+			//定义求不大于n的素数个数的函数pi(n)
+			function pi(n){
+				
+				//初始化一个数组priArr专门用来存储素数
+				//第一个素数默认为2
+				var priArr = [2];
+				
+				//只检验奇数,因为偶数肯定不是素数,所以取i=i+2
+				for(var i=3 ; true ; i=i+2){
+					
+					//获取平方根
+					var sqrt = Math.sqrt(i);
+					
+					//创建素数标志,默认是素数
+					var flag = true;
+					
+					//在平方根的范围内用这个范围内的素数一个一个验证
+					for(var j=0 ; j<=sqrt ; j++){
+						
+						//如果超出平方根范围,可以确定是素数
+						if(priArr[j] > sqrt){
+							flag = true;
+							break;
+						}
+						
+						//如果被这个范围内的素数整除,那么不熟素数
+						if(i % priArr[j] == 0){
+							flag = false;
+							break;
+						}
+					}
+					
+					//把素数添加到保存素数的数组里
+					if(flag){
+						priArr.push(i);
+					}
+					if(priArr[priArr.length-1] > n){
+						break;
+					}
+				}
+				
+				return(priArr.length-1);
+				
+			}
+			
+			//console.log(pi(100));
+			/* var primeArr = [0];
+			for(var i=2 ; i<=20000 ; i++){
+				primeArr.push(pi(i));
+			} */
+			
+			//console.log(primeArr);
+			//document.write(primeArr);
+			//console.log(primeArr.length);
+			console.log(pi(2000000));
+			
+			console.timeEnd("test");
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

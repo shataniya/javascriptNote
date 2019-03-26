@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+				 *	登录QQ号需要的属性
+				 * 		1.QQ账号
+				 * 		localStorage.qqaccount
+				 * 		2.QQ密码
+				 * 		localStorage.qqpassword
+				 * 	QQ号个人信息的属性
+				 * 		1.昵称
+				 * 		localStorage.nickname
+				 * 		2.性别
+				 * 		localStorage.gender
+				 * 		3.生日
+				 * 		localStorage.birthday
+				 * 		4.绑定的手机号
+				 * 		localStorage.phone
+				 *
+				 */
+				
+				
+				//获取登录按钮
+				var register = document.getElementById("register");
+				
+				//获取注册按钮
+				var login = document.getElementById("login");
+				
+				//登录按钮的功能
+				register.onclick = function(){
+					
+					var flag = true;
+					
+					//定义正则表达式
+					var accountreg = /^\d{10}$/g;
+					var passwordreg = /^\w+$/g;
+					//接收输入的信息
+					//获取QQ账号
+					var account = document.getElementById("account").value;
+					//获取QQ密码
+					var password = document.getElementById("password").value;
+					//console.log("account = "+account);
+					//console.log("password = "+password);
+					if(accountreg.test(account) && passwordreg.test(password)){
+						if(account == localStorage.qqaccount && password == localStorage.qqpassword){
+						}else{
+							alert("账号或密码有错误！！");
+							flag = false;
+						}
+					}else{
+						alert("账号或密码有错误！！");
+						flag = false;
+						
+					}
+					
+					return(flag);
+					
+				}
+				//console.log(localStorage.id);
+								
+			}
+			
+			//console.log(localStorage);
+			//console.log(typeof localStorage);//object
+			//console.log(Array.isArray(localStorage));//false
+			
+		</script>
+		
+		<style type="text/css">
+			/* #outer{
+				text-align: center;
+				align-content: center;
+			} */
+			#outtabel{
+				text-align: center;
+			}
+			#qqaccount{
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<h2>QQ登录界面</h2>
+			
+			<table id="outtabel">
+				
+				<tr>
+					<td class="word">QQ账号:</td>
+					<td class="inp">
+						<input type="text" name="account" id="account" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">QQ密码:</td>
+					<td class="inp">
+						<input type="text" name="password" id="password" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button id="register" value="abc">
+							<a href="succeelogin.html">登录</a>
+						</button>
+						<button id="login" value="abc" >
+							<a href="qqlogin.html">注册</a>
+						</button>
+						<button id="forget" value="abc">
+							<a href="qqforget.html">忘记密码</a>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</body>
+</html>

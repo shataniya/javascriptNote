@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			function r(n){
+				
+				//新的素数算法
+				//首先创建一个保存素数的数组
+				var priArr = [2];
+				//var mark = 0;
+				//console.log(priArr[0]);
+				for(var i=3 ; true ; i=i+2){
+					
+					//获取平方根
+					var sqrt = Math.sqrt(i);
+					
+					//创建素数标志,默认是素数
+					var flag = true;
+					for(var j=0 ; j<=sqrt ; j++){
+						if(priArr[j] > sqrt){
+							flag = true;
+							break;
+						}
+						if(i % priArr[j] == 0){
+							flag = false;
+							break;
+						}
+					}
+					if(flag){
+						priArr.push(i);
+					}
+					if(priArr.length == n+1){
+						break;
+					}
+				}
+				//console.log(priArr);
+				//找到4001个素数以后,求出相应的差
+				var r = 0;
+				for(var i=0 ; i<priArr.length ; i++){
+					if(priArr[i+1] - priArr[i] == 2){
+						r++;
+					}
+				}
+				
+				return(r);
+				
+			}
+			//console.log(r(4000));
+			var twinArr = [];
+			for(var i=1 ; i<=20000 ; i++){
+				twinArr.push(r(i));
+			}
+			
+			
+			function pi(n){
+				
+				var priArr = [2];
+				//var mark = 0;
+				//console.log(priArr[0]);
+				for(var i=3 ; true ; i=i+2){
+					
+					//获取平方根
+					var sqrt = Math.sqrt(i);
+					
+					//创建素数标志,默认是素数
+					var flag = true;
+					for(var j=0 ; j<=sqrt ; j++){
+						if(priArr[j] > sqrt){
+							flag = true;
+							break;
+						}
+						if(i % priArr[j] == 0){
+							flag = false;
+							break;
+						}
+					}
+					if(flag){
+						priArr.push(i);
+					}
+					if(priArr[priArr.length-1] > n){
+						break;
+					}
+				}
+				
+				return(priArr.length-1);
+				
+			}
+			
+			//console.log(pi(100));
+			var primeArr = [0];
+			for(var i=2 ; i<=20000 ; i++){
+				primeArr.push(pi(i));
+			}
+			
+			/* var rate = [];
+			for(var i=1 ; i<=10000 ; i++){
+				rate.push(twinArr[i]/primeArr[i]);
+				document.write(rate[rate.length-1]+"<br />");
+			} */
+			var rate = twinArr[twinArr.length]/primeArr[primeArr.length];
+			console.log(rate);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		s<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+				 *	当垂直滚动条滚动到底的时候，表单项变为可用
+				 * 	onscroll
+				 * 		该事件会在元素的滚动条滚动时发生
+				 */
+				var info = document.getElementById("info");
+				var btn01 = document.getElementById("btn01");
+				var sure = document.getElementById("sure");
+				
+				info.onscroll = function(){
+					if(info.scrollHeight - info.scrollTop == info.clientHeight){
+						//当垂直滚动条滚动到底的时候，表单项变为可用
+						/* 
+						 *	使用disabled属性可以修改表单项项是否可用
+						 * 	语法:对象.disabled = true|false
+						 * 	如果为true，那么是不可用
+						 * 	如果为false，那么可用
+						 * 
+						 */
+						sure.disabled = false;
+						btn01.disabled = false;
+						
+					}
+				};
+				
+				
+			}
+			
+		</script>
+		
+		<style type="text/css">
+			
+			#info{
+				width: 300px;
+				height: 500px;
+				background-color: aqua;
+				overflow: auto;/* 整出滚动条 */
+			}
+			
+			
+		</style>
+		
+	</head>
+	<body>
+		<h3>欢迎亲爱的用户注册</h3>
+		<p id="info">
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下协议，如果不仔细阅读，你就别注册了
+			亲爱的用户请仔细阅读一下
+			</p>
+			<input type="checkbox" id="sure" disabled="disabled"/>我已经仔细阅读，一定遵守
+			
+			<!-- 如果为表单添加disabled="disabled" 则表单项将变成不可用的状态 -->
+			<input type="submit" id="btn01" value="注册" disabled="disabled"/>
+			<!-- submit是提交的意思 -->
+	</body>
+</html>

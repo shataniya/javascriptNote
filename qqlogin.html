@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//获取昵称
+				var inputnick = document.getElementById("inputNick");
+				inputnick.onclick = function(){
+					inputnick.value = "";
+				}
+				//鼠标离开昵称
+				inputnick.onmouseleave = function(){
+					
+				}
+				
+				//获取性别
+				var inputman = document.getElementById("inputMan");
+				var inputwomen = document.getElementById("inputWomen");
+				inputman.onclick = function(){
+					inputman.checked = inputman.checked;
+					inputwomen.checked = !inputman.checked;
+				}
+				inputwomen.onclick = function(){
+					inputwomen.checked = inputwomen.checked;
+					inputman.checked = !inputwomen.checked;
+				}
+				
+				//localStorage.id = "nihao";
+				//console.log(localStorage.id);
+				
+				//生成随机4位验证码
+				var num = parseInt(Math.random(1,1)*9000+999);
+				//console.log(num);
+				
+				//按下获取验证码按钮获取验证码
+				var getRandCode = document.getElementById("getRandCode");
+				getRandCode.onclick = function(){
+					alert("验证码为:"+num);
+				}
+				
+				//按下确定按钮
+				var sure = document.getElementById("sure");
+				sure.onclick = function(){
+					
+					//获取昵称
+					var nickname = document.getElementById("inputNick").value;
+					
+					//获取性别
+					var gender = "";
+					if(inputman.checked){
+						gender = "男生";
+					}
+					if(inputwomen.checked){
+						gender = "女生";
+					}
+					
+					//获取出生日期
+					var birthday = document.getElementById("inputBirthday").value;
+					
+					//获取手机号码
+					var phone = document.getElementById("inputPhone").value;
+					var phoneReg = /^1[3-8][0-9]{9}$/g;
+					
+					//获取手机验证码
+					var code = document.getElementById("inputCode").value;
+					
+					//创建一个返回标志
+					var flag = false;
+					
+					if(nickname){
+						if(gender){
+							if(birthday){
+								if(phoneReg.test(phone)){
+									
+									//检查验证码输入的对不对
+									if(code == num){
+										
+										//把信息保存起来
+										localStorage.nickname = nickname;
+										localStorage.gender = gender;
+										localStorage.birthday = birthday;
+										localStorage.phone = phone;
+										/* console.log(localStorage.nickname);
+										console.log(localStorage.gender);
+										console.log(localStorage.birthday);
+										console.log(localStorage.phone); */
+										
+										flag = true;
+									}else{
+										alert("请输入验证码(^w^)~~");
+									}
+								}else{
+									alert("手机号码不合法(=_=)~~")
+								}
+							}else{
+								alert("你忘记输入生日了(=_=)~~");
+							}
+						}else{
+							alert("选择性别(^w^)~~");
+						}
+						
+					}else{
+						alert("请输入昵称(^w^)~~");
+					}
+					return(flag);
+					
+				};
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<table>
+				<h2>QQ注册界面</h2>
+				<tr>
+					<td>昵称:</td>
+					<td id="nickname">
+						<input type="text" name="inputnick" id="inputNick" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td id="man">
+						<input type="checkbox" name="inputman" id="inputMan" value="男生"/>男生
+						<input type="checkbox" name="inputwomen" id="inputWomen" value="女生" />女生
+					</td>
+				</tr>
+				<tr>
+					<td>出生日期:</td>
+					<td id="birthday">
+						<input type="text" name="inputbirthday" id="inputBirthday" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>手机号码:</td>
+					<td id="phone">
+						<input type="text" name="inputphone" id="inputPhone" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>验证码:</td>
+					<td id="code">
+						<input type="text" name="inputcode" id="inputCode" value=""/>
+					</td>
+					<td>
+						<button id="getRandCode">获取验证码</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="word" name="return" id="return">
+							<a href="qqmodal.html">返回</a>
+						</button>
+						<button id="sure">
+							<a href="newqq.html">确认</a>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

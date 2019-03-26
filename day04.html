@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *16进制是以0x开头的，8进制是以0开头的
+			 *2进制是以0b开头的
+			 * 
+			 * parseInt(x,y),表示把x转化成y进制
+			 * 
+			 * 把其他数据转化成布尔值
+			 * 方法一：
+			 *       调用Boolean()函数
+			 * 数字---->Boolean,有以下几种情况：
+			 * a = 0----->false
+			 * a != 0---->true
+			 * a = infinity---->ture
+			 * a = NaN---->false
+			 * //除了0和NaN，其余结果都是true
+			 * 
+			 * 字符串---->Boolean
+			 * 除了空串，其余的都是true
+			 * 空串就是""
+			 * 
+			 * null,undefined---->Boolean,结果都是false
+			 * 
+			 * 
+			 */
+			var a = "";
+			a = Boolean(a);
+			console.log(typeof a);
+			console.log(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

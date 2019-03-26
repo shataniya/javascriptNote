@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 *数组的遍历可以使用for循环来实现，但是在JS中也提供了一个方法
+			 * forEach()方法
+			 * 		forEach()方法需要一个函数作为参数
+			 */
+			//创建一个数组
+			var arr = ["孙悟空","猪八戒","沙和尚","唐三藏","白骨精"];
+			
+			/* 
+			 * forEach()方法需要一个函数作为参数
+			 *		数组有几个元素就执行几次
+			 * 浏览器会传递会三个参数
+			 * 		第一个参数是元素值-->a//value
+			 * 		第二个参数是索引-->b//index
+			 * 		第三个参数是对象-->c//obj
+			 */
+			/* arr.forEach(function(a,b,c){
+				console.log("c = "+c);
+			});
+			 */
+			arr.forEach(function(value,index,obj){
+				console.log("value = "+value);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

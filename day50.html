@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 * Math类
+			 * 		可以理解为这是一个数学工具类，提供一些数学运算的函数
+			 */
+			
+			//Math.PI--->就是圆周率,即3.1415926
+			//console.log(Math.PI);
+			
+			//Math.abs()用来计算一个数的绝对值
+			//console.log(Math.abs(-3));//3
+			
+			/* 
+			 *	Math.ceil()
+			 * 		对数进行上取整,也就是只要有小数就向上进一
+			 */
+			//console.log(Math.ceil(1.5));//2
+			//console.log(Math.ceil(1.01));//2
+			
+			/* 
+			 *	Math.floor()
+			 * 		对数进行向下取整，也就是指保留整数部分，小数部分舍去
+			 */
+			//console.log(Math.floor(1.5));//1
+			//console.log(Math.floor(1.99));//1
+			
+			/* 
+			 *	Math.round()
+			 * 		四舍五入取整
+			 */
+			//console.log(Math.round(1.5));//2
+			//console.log(Math.round(1.4));//1
+			
+			/* 
+			 *	Math.random()
+			 *		 可以用来随机生成0~1之间的数	
+			 * 		 不会生成0，也不会生成1
+			 */
+			//console.log(Math.random());
+			/* for(var i=0 ; i<100 ; i++){
+				console.log(Math.random());
+			} */
+			//生成0~10的随机数,可以是0,也可以是10,可以采用四舍五入Math.round()方法
+			/* for(var i=0 ; i<100 ; i++){
+				console.log(Math.round(Math.random()*10));
+			} */
+			//于是生成0~x的随机数
+			//console.log(Math.round(Math.random()*x));
+			
+			//想生成a~b之间的随机数
+			//可以用Math.round(Math.random()*(b-a)+a)
+			
+			//生成5~10之间的随机数
+			/* for(var i=0 ; i<100 ; i++){
+				console.log(Math.round(Math.random()*5+5));//5~10
+			} */
+			
+			/* 
+			 *	Math.max()
+			 * 		可以获取多个数的最大值
+			 * 	Math.min()
+			 * 		可以获取多个数的最小值
+			 */
+			/* var max = Math.max(10,15,3);
+			var min = Math.min(10,15,3);
+			console.log(max);
+			console.log(min); */
+			
+			/* 
+			 *	Math.pow(x,y)
+			 *		可以求x的y次幂 
+			 */
+			console.log(Math.pow(2,4));//16
+			console.log(Math.pow(3,3));//27
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//创建新账号的对象
+				/* function newAccount(account , password){
+					this.account = account;
+					this.password = password;
+				}; */
+				
+				//获取账号
+				//获取label的对象
+				var account = document.getElementById("account");
+				
+				//修改label的值要用innerHTML方法
+				account.innerHTML = parseInt(Math.random(1,1)*9000000000+999999999);
+				
+				//弹出账号提示
+				alert("你获得的QQ账号是:\n"+account.innerHTML);
+				
+				//设置密码
+				var password = document.getElementById("password");
+				
+				//再次输入密码
+				var repassword = document.getElementById("repassword");
+				var passlabel = document.getElementById("passlabel");
+				
+				var newpasslabel = document.getElementById("newpasslabel");
+				
+				//点击设置密码编辑框
+				password.onclick = function(){
+					var pa = password.value;
+					//设置密码规则
+					var passwordReg = /^\w{6,}$/ig;
+					var reg = passwordReg.test(pa);
+					if(pa){
+						if(reg){
+							newpasslabel.innerHTML = "(^w^)";
+						}else{
+							newpasslabel.innerHTML = "密码至少6位数";
+						}
+					}else{
+						newpasslabel.innerHTML = "密码至少6位数";
+					}
+				};
+				
+				/* //当鼠标靠近设置密码编辑框
+				password.onmousemove = function(){
+					var pa = password.value;
+					if(pa){
+						if(passwordReg.test(pa)){
+							newpasslabel.innerHTML = "(^w^)";
+						}else{
+							newpasslabel.innerHTML = "密码至少6位数";
+						}
+					}else{
+						newpasslabel.innerHTML = "密码至少6位数";
+					}
+				}; */
+				
+				//当鼠标离开设置密码编辑框
+				password.onmouseout = function(){
+					var pa = password.value;
+					//设置密码规则
+					var passwordReg = /^\w{6,}$/ig;
+					var reg = passwordReg.test(pa);
+					if(pa){
+						if(reg){
+							newpasslabel.innerHTML = "(^w^)";
+						}else{
+							newpasslabel.innerHTML = "(=_=)";
+						}
+					}else{
+						newpasslabel.innerHTML = "密码至少6位数";
+					}
+				};
+				
+				//点击再次输入密码的编辑框
+				repassword.onclick = function(){
+					var repa = repassword.value;
+					var passwordReg = /^\w{6,}$/ig;
+					var reg = passwordReg.test(repa);
+					if(repa){
+						if(reg){
+							passlabel.innerHTML = "(^w^)";
+						}else{
+							passlabel.innerHTML = "";
+							//alert("密码至少6位数");
+						}
+					}else{
+						passlabel.innerHTML = "";
+					}
+				};
+				
+				//当鼠标离开再次输入密码的编辑框
+				repassword.onmouseout = function(){
+					//alert("nihao");
+					var pa = password.value;
+					var repa = repassword.value;
+					//console.log(pa);
+					//console.log(repa);
+					if(pa && repa){
+						if(pa == repa){
+							passlabel.innerHTML = "(^w^)";
+							
+						}else{
+							passlabel.innerHTML = "(=_=)";
+						}
+						
+					}else{
+						passlabel.innerHTML = "";
+					}
+					
+				};
+				
+				//点击返回登录按钮
+				var relogin = document.getElementById("relogin");
+				relogin.onclick = function(){
+					
+					var pa = password.value;
+					var repa = repassword.value;
+					//console.log(pa);
+					//console.log(repa);
+					
+					var flag = true;
+					if(pa && repa){
+						if(pa == repa){
+							//如果满足条件就保存密码
+							localStorage.qqpassword = pa;
+							localStorage.qqaccount = account.innerHTML;
+						}else{
+							alert("密码输入不相同(=_=)~~");
+							flag = false;
+						}
+					}else{
+						alert("请输入密码~~")
+						flag = false;
+					}
+					
+					return(flag);
+				};
+				
+				//点击立即登录按钮
+				var loginNow = document.getElementById("loginNow");
+				loginNow.onclick = function(){
+					var pa = password.value;
+					var repa = repassword.value;
+					//console.log(pa);
+					//console.log(repa);
+					
+					var flag = true;
+					if(pa && repa){
+						if(pa == repa){
+							//如果满足条件就保存密码
+							localStorage.qqpassword = pa;
+							localStorage.qqaccount = account.innerHTML;
+						}else{
+							alert("密码输入不相同(=_=)~~");
+							flag = false;
+						}
+					}else{
+						alert("请输入密码~~")
+						flag = false;
+					}
+					
+					return(flag);
+				};
+				
+		
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<h2>恭喜你注册完成！~~</h2>
+			<table>
+				<tr>
+					<td>你的QQ账号是:</td>
+					<td>
+						<label id="account"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>设置密码:</td>
+					<td>
+						<input type="text" name="password" id="password" value=""/>
+					</td>
+					<td>
+						<label id="newpasslabel"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>再次输入密码:</td>
+					<td>
+						<input type="text" name="repassword" id="repassword" value=""/>
+					</td>
+					<td>
+						<label id="passlabel"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button id="relogin">
+							<a href="qqmodal.html">返回登录</a>
+						</button>
+						<button id="loginNow">
+							<a href="succeelogin.html">立即登录</a>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

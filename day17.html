@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//输出自定义范围之内的素数
+			while(true){
+				var input = +prompt("请输入一个数：");
+				if(input <= 1 || isNaN(input)){
+					alert("输入不合法！");
+				}else{
+					break;
+				}
+			}
+			for(var i=2 ; i <= input ; i++){
+				var flag = true;
+				for(var j=2 ; j < i ; j++){
+					if(i % j == 0){
+						flag = false;
+					}
+				}
+				if(flag){
+					document.write(i+"<br />");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

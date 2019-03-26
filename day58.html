@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	创建一个正则表达式来检查字符串是不是qq邮箱
+			 *
+			 */
+			
+			var str = prompt("请输入qq邮箱：");
+			str = str.replace(/\s/g,"");//去掉所有空格
+			var reg = /^[0-9]{10}@qq\.com$/;//检查是否符合qq邮箱格式
+			if(reg.test(str)){
+				alert("qq邮箱合法~~~");
+				//break;
+			}else{
+				alert("qq邮箱不合法~~");
+			}
+			console.log(str);
+			console.log(reg);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

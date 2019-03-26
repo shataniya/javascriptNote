@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//alert("nihao");
+			
+			/* 
+			 *	onload事件会在整个页面加载完之后才能触发
+			 * 	为window绑定一个onload事件
+			 * 		该事件对应的响应会在页面加载完之后执行
+			 * 		这样可以确保代码执行时，所有的DOM对象已经加载完了
+			 * 
+			 */
+			window.onload = function(){
+				/* var btn = document.getElementById("btn");
+				btn.onclick = function(){
+					alert("点我干嘛~~~！");
+				};//千万不要忘了分号 */
+			};
+		</script>
+	</head>
+	<body>
+		<button id="btn">点我一下</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				alert("点我干嘛~~~！");
+			};//千万不要忘了分号
+			
+			/* 
+			 *	浏览器加载页面是从上往下一行一行加载的
+			 * 	读到一行就运行一行
+			 * 	如果将script标签写到页面的上边
+			 * 	在代码执行时，页面好没有加载，那么就会获取一个null，因此会报错
+			 * 
+			 * 	因此有一个规则：
+			 * 		将script标签或者说JS代码写到页面的下边，就是为了确保页面加载完了以后，再执行JS代码
+			 */
+			
+		</script>
+	</body>
+</html>

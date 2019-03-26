@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//显示昵称
+				var nicklabel = document.getElementById("nicklabel");
+				nicklabel.innerHTML = localStorage.nickname;
+				
+				//显示性别
+				var genderlabel = document.getElementById("genderlabel");
+				genderlabel.innerHTML = localStorage.gender;
+				
+				//显示生日
+				var birlabel = document.getElementById("birlabel");
+				birlabel.innerHTML = localStorage.birthday;
+				
+				//显示绑定手机号
+				var phonelabel = document.getElementById("phonelabel");
+				phonelabel.innerHTML = localStorage.phone;
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<h1>恭喜你成功登录QQ(^w^)</h1>
+			<table>
+				<tr>你的QQ个人信息:</tr>
+				<tr>
+					<td>昵称:</td>
+					<td>
+						<label id="nicklabel"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td>
+						<label id="genderlabel"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>生日:</td>
+					<td>
+						<label id="birlabel"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>绑定的手机号:</td>
+					<td>
+						<label id="phonelabel"></label>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

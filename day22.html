@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 *基本数据和引用数据
+			 * 基本数据有：string number boolean null undefined
+			 * 引用数据有：object
+			 * 
+			 * 两者的很重要的区别就是：
+			 * 基本数据的变量是相互独立的，互不改变的
+			 * 但是引用变量的变量是相互影响的
+			 * 
+			 */
+			var a = 123;
+			var b = a;
+			a++;//a改变了,但是对b没有影响
+			/* console.log("a = "+a);
+			console.log("b = "+b); */
+			//但是引用变量object创建的变量会存在影响
+			var obj1 = new Object();
+			obj1.name = "nihao";
+			obj1.name = "daming";//改变obj1的name属性,obj2的name属性也会改变
+			var obj2 = obj1;
+			/* 
+			 *可以这么理解，就是引用变量的属性对应的是一个内存地址，以obj1为例
+			 * obj1是创建的一个新的对象，name是在obj1里添加的属性，可以理解为
+			 * name对应一个内存地址，当把obj1赋予obj2的时候，就是把内存地址赋
+			 * 予给了obj2，所以当name属性的值改变时，obj2也改变了
+			 */
+			//因此基本数据保存的是数据的值,而引用数据保存的是内存地址
+			obj2.name = null;
+			obj2 = null;
+			console.log(obj1);
+			console.log(obj2);
+			/* 
+			 *可以发现，当把obj2变量的值改为null的时候，obj1却没有发生改变
+			 * 这是因为，obj2的值改变了，可以理解为obj2对应的内存地址改变了
+			 * 因此obj2的改变不影响obj1的值
+			 * 但是如果obj2里面的属性值改变了，那么obj1的属性值也会跟着改变
+			 * 
+			 * 总结就是：
+			 * 引用数据的值的改变不会影响另一个引用数据值的改变；但是当引用数据
+			 * 的属性值改变时，另一个引用数据的属性值也会改变，因为它们对应的是
+			 * 同一个内存地址
+			 */
+			//两个基本数据进行比较时,就是比较值
+			//但是两个引用数据进行比较时,是比较内存地址
+			var obj3 = new Object();
+			var obj4 = new Object();
+			obj3.name = "nihao";
+			obj4.name = obj3.name;
+			console.log(obj3);
+			console.log(obj4);
+			//比较两个引用变量
+			console.log(obj3 == obj4);//false
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

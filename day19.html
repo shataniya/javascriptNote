@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//求p(x)函数,就是描述素数位置的函数
+			/*
+			 *编完程序要提升程序的运行速度，提高程序的性能，让程序能更好的执行
+			 * 消除一些无意义的程序，可以使用break等来消除无意义的程序
+			 * 好好分析程序的结构
+			 * 
+			 */
+			while(true){
+				var input = +prompt("输入一个数：");
+				if(input <= 0 || isNaN(input)){
+					alert("数入不合法！");
+				}else{
+					break;
+				}
+			}
+			var count = 0;
+			console.time("test");
+			//寻找到指定的素数
+			for(var i=2 ; true ; i++){
+				var flag = 1;
+				//Math.sqrt(i)
+				for(var j=2 ; j <= Math.sqrt(i); j++){
+					if(i % j == 0){
+						flag = 0;
+						break;
+					}
+				}
+				if(flag){
+					count++;
+				}
+				if(count == input){
+					alert("p("+input+") = "+i);
+					break;
+				}
+			}
+			console.timeEnd("test");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

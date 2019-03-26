@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="JS/tools.js"></script>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var btn01 = document.getElementById("btn01");
+				var btn02 = document.getElementById("btn02");
+				var btn03 = document.getElementById("btn03");
+				var btn04 = document.getElementById("btn04");
+				var box1 = document.getElementById("box1");
+				var box2 = document.getElementById("box2");
+				//点击以后
+				btn01.onclick = function(){
+					
+					move(box1,"left",800,20);
+					
+				};
+				
+				btn02.onclick = function(){
+					
+					move(box1,"left",0,20);
+					
+				};
+				
+				btn03.onclick = function(){
+					
+					move(box2,"left",800,20);
+					//console.log(box2);
+				};
+				
+				btn04.onclick = function(){
+					
+					move(box2,"width",800,20,function(){
+						move(box2,"height",400,20,function(){
+							move(box2,"top",0,20,function(){
+								move(box2,"width",100,20,function(){
+									move(box2,"height",100,20,function(){
+										move(box2,"top",200,20);
+									});
+								});
+							});
+						});
+					});
+					//console.log(box2);
+				};
+				
+				/* 
+				 *	可以看见，定时器的标识timer是全局变量，当打开定时器移动box2的时候，实际上box1的定时器
+				 * 	已经关掉了，因此会出现box1停下来的情况，如何解决这个问题？
+				 * 	
+				 * 	就是让box1和box2都拥有自己自的定时器，于是可以想到，在box1和box2里各自设置自己的定时器标识
+				 * 	可以这样，把timer属性设置到obj里的属性，那么不同的obj会有自己的timer
+				 */
+				
+				
+			};
+			
+			
+		</script>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				position: absolute;
+				left: 0px;
+			}
+			/* 由于 */
+			#box2{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0px;
+				top: 200px;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<div style="width: 0;height: 1000px;border-left: 1px black solid;position: absolute;left: 800px;"></div>
+		<button id="btn01">点击按钮以后box1向右移动</button>
+		<button id="btn02">点击按钮以后box1向左移动</button>
+		<br />
+		<button id="btn03">点击按钮以后box2向右移动</button>
+		<button id="btn04">点击按钮以后box2向左移动</button>
+		<br /><br />
+		<div id="box1"></div>
+		<div id="box2"></div>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	BOM
+			 * 		浏览器对象模型
+			 * 		BOM可以使我们通过JS来操作浏览器
+			 * 		在BOM提供了一组对象来完成对浏览器的操作
+			 * 
+			 * 	BOM对象
+			 * 		Window
+			 * 			它代表的是整个浏览器的窗口，同时也是网页中的全局对象
+			 * 
+			 * 		Navigator
+			 * 			代表的是当前浏览器的信息，通过该对象可以来识别不同的浏览器
+			 * 
+			 * 		Location
+			 * 			地址，代表当前浏览器的地址栏
+			 * 			通过Location可以获取地址栏信息，或者操作浏览器跳转页面
+			 * 
+			 * 		History
+			 * 			历史记录，代表浏览器的历史记录，通过该对象来操作浏览器的历史记录
+			 * 			由于隐私的原因，该对象不能获取到具体的历史记录
+			 * 			只能操作浏览器向前或者后退
+			 * 			而且该操作仅在当次访问时有效
+			 * 
+			 * 		Screen
+			 * 			代表用户的屏幕的信息，通过该对象可以获取到用户的显示器的相关信息
+			 * 
+			 * 	这些BOM对象在浏览器中都是作为window的属性保存的
+			 * 	可以通过window对象来使用，也可以直接使用
+			 */
+			
+			//console.log(window.Navigator);
+			//console.log(window.Location);
+			//console.log(window.History);
+			
+			//alert(navigator.appName);//Netscape
+			/* 
+			 *	Navigater
+			 * 		由于历史原因，Navigater中的大部分属性已经不能帮助我们识别浏览器了
+			 * 		一般只会使用userAgent来判断浏览器的信息
+			 * 		userAgent -->指的就是浏览器
+			 * 		它是一个字符串，这个字符串中包含有用来描述浏览器信息的内容
+			 * 		不同的是，浏览器会有不同的userAgent
+			 */
+			console.log(navigator.userAgent);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

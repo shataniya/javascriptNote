@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var account = document.getElementById("account");
+				var inputPhone = document.getElementById("inputPhone");
+				var inputCode = document.getElementById("inputCode");
+				
+				//生成随机4位验证码
+				var num = parseInt(Math.random(1,1)*9000+999);
+				
+				//按下获取验证码按钮
+				var getRandCode = document.getElementById("getRandCode");
+				getRandCode.onclick = function(){
+					var acc = account.value;
+					var phone = inputPhone.value;
+					if(acc == localStorage.qqaccount && phone == localStorage.phone){
+						alert("验证码为:"+num);
+					}else{
+						alert("QQ账号或手机号错误！！");
+					}
+				};
+				
+				//按下确认按钮
+				var sure = document.getElementById("sure");
+				sure.onclick = function(){
+					
+					var code = inputCode.value;
+					var flag = false;
+					//如果验证码输入正确
+					if(code == num){
+						flag = true;
+					}
+					
+					return(flag);
+				};
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<table>
+				<h2>找回密码(^w^)~~</h2>
+				<tr>
+					<td>QQ账号:</td>
+					<td id="qqaccount">
+						<input type="text" name="account" id="account" value=""/>
+					</td>
+				</tr>
+				<tr>
+					<td>手机号码:</td>
+					<td id="phone">
+						<input type="text" name="inputphone" id="inputPhone" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>验证码:</td>
+					<td id="code">
+						<input type="text" name="inputcode" id="inputCode" value="" />
+					</td>
+					<td>
+						<button id="getRandCode">获取验证码</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button>
+							<a href="qqmodal.html">返回</a>
+						</button>
+						<button id="sure">
+							<a href="newpassword.html">确认</a>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

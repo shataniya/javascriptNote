@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var arr1 = [1,2,3];
+			var arr2 = [3,5,6];
+			
+			/* 
+			 *concat()就是连接两个或者多个数组，将新的数组返回
+			 * 	语法：数组1.concat(数组2)//将数组1和数值2连接
+			 * 	concat()不会对原数组产生影响
+			 */
+			
+			/* var arr = arr1.concat(arr2);
+			console.log(arr1);
+			console.log(arr2);
+			console.log(arr); */
+			
+			/* 
+			 *join()
+			 * 	该方法可以将一个数组转换成一个字符串
+			 * 	该方法不会对原数组产生影响
+			 * 	在join可以指定一个字符串作为参数，这个字符串将会成为数组中的连接符
+			 * 	//语法是：join("字符串")
+			 * 	如果不指定连接符，就默认是逗号
+			 * 
+			 */
+			
+			//arr = arr1.join("@");//将arr1转换成字符串
+			//1@2@3
+			/* console.log(arr1);
+			console.log(arr);
+			console.log(typeof arr1);//object
+			console.log(typeof arr);//string */
+			
+			/* 
+			 *reverse()
+			 * 	反转数组（前边的去后边，后边的去前边）
+			 * 	reverse()方法会对原数组产生影响
+			 *  
+			 */
+			/* var arr = arr1.reverse();
+			console.log(arr1);
+			console.log(arr);
+			console.log(arr2); */
+			
+			/* 
+			 *sort()
+			 * 	sort()方法可以对数组中的元素进行排序
+			 * 	sort()对原数组有影响
+			 * 	sort()是按照unicode的编码来排序的
+			 * 	//所以对数字进行排序时，可能也会按照unicode编码来排序，从而得到错误的结果
+			 * 	于是我们可以指定排序的规则
+			 * 		我们可以在sort()添加一个回调函数，来指定排序规则
+			 * 			回调函数中需要定义2个形参
+			 * 			浏览器将会分别使用数组中的元素作为实参去调用回调函数
+			 * 			使用哪两个元素不确定，但可以肯定的是，在数组中一定在b的前面
+			 * 		浏览器会根据回调的返回值来决定元素的顺序
+			 * 			如果返回一个大于0的值，则元素会交换位置
+			 * 			如果返回一个小于0的值，则元素位置不变
+			 * 			如果返回值为0，则元素也不会交换位置
+			 */
+			var arr3 = [11,52,4,61,28,7,3,8];
+			/* var arr = arr3.sort();//对原数组有影响
+			console.log(arr3);
+			console.log(arr); */
+			
+			//从大到小排列
+// 			arr3.sort(function(a,b){
+// 				/* if(a >= b){
+// 					return(0);
+// 				}else{
+// 					return(1);
+// 				} */
+// 				return(a - b);
+// 			})
+			
+			
+			//从小到大排列
+// 			arr3.sort(function(a,b){
+// 				/* if(a > b){
+// 					return(1);
+// 				}else{
+// 					return(0);
+// 				} */
+// 				return(b - a);
+// 			})
+			arr3.sort(function(a,b){
+				//return(b-a);//从大到小排列
+				return(a-b);//从小到大排列
+			})
+
+			console.log(arr3);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

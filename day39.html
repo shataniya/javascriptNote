@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//创建一个数组
+			var arr1 = new Array();
+			
+			//使用字面量的方法来创建数组
+			var arr2 = [];
+			console.log(arr2);
+			console.log(typeof arr2);//object
+			
+			//用字面量创建数组时,可以创建时就指定数组的元素
+			var arr3 = [1,2,3,4,5];
+			console.log(arr3);
+			console.log(arr3[2]);
+			console.log(arr3.length);
+			
+			//使用构造函数创建数组时,也可以直接添加数据,元素之间用逗号隔开
+			var arr4 = new Array(10,20,30);
+			console.log(arr4);
+			console.log(arr4.length);
+			
+			//创建一个数组
+			var arr5 = [10];//创建的是只有一个元素的数组
+			console.log(arr5);
+			
+			//用new array()创建数组
+			var arr6 = new Array(10);
+			console.log(arr6);//创建的是一个长度为10的数组
+			//**因此大部分情况情况下都会采用字面量的方式创建数组**
+			
+			//数组中的元素可以是任意的数据类型,不仅仅是数组
+			var arr = ["hello",1,true,null,undefined];
+			//console.log(arr);
+			//元素也可以是对象,object类型
+			
+			//数组的元素也可以是函数
+			arr = [function(){alert("nihao");},function(){alert("hello");}];
+			arr[0]();
+			arr[1]();
+			
+			//数组的元素也可以是数组,数组了放数组就变成了二位数组
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

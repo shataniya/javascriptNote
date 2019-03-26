@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var text = document.getElementById("text");
+				text.onclick = function(){
+					var te = text.value;
+					var reg = /^\d{6,}$/ig;
+					if(reg.test(te)){
+						console.log("true");
+					}else{
+						console.log("false");
+					}
+				};
+				
+				
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<table>
+				<tr>
+					<td>文本</td>
+					<td>
+						<input id="text" value=""/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	检查字符串里是不是有.
+			 * 	. 表示任意字符
+			 * 	因此要是用转义字符，在正则表达式中使用\作为转义字符
+			 * 	\. 表示.
+			 * 	\\ 表示\
+			 * 
+			 */
+			//var reg = /\./;
+			//var str = "6948.8745\\8745";
+			//console.log(reg.test(str));//true
+			
+			//检查是不是有斜杠\
+			
+			//reg = /\\/;
+			
+			//reg = new RegExp("\.")
+			
+			//console.log(reg.test(str));//true
+			//console.log(reg);//-->/./
+			//如果想变成 /\./,要进行转义即,/\\./
+			//reg = new RegExp("\\.");
+			//console.log(reg);//-->/\./
+			
+			/* 
+			 *	\w 表示任意的数字，字母，下划线-->[A-z0-9_]
+			 * 	\W 表示除了任意的数字，字母，下划线-->[^A-z0-9_]
+			 * 	\d 表示任意数字-->[0-9]
+			 * 	\D 表示除了数字-->[^0-9]
+			 * 	\s 表示空格
+			 * 	\S 表示除了空格
+			 *	\b 表示单词边界
+			 * 	\B 表示除了单词边界
+			 */
+			
+			//var reg = /\bchild\b/;//此时\b就是作为单词边界
+			//var str = "hello children";
+			//console.log(reg.test(str));
+			
+			//请输入一个用户名,然后接收这个用户名
+			var str = prompt("请输入一个用户名：");
+			/* 
+			 *	首先肯定要删除用户不小心的空格，保留用户有意留下的空格
+			 * 	因此大多数情况下是，删除用户名前边的空格，删除用户名后边的空格
+			 * 	反倒是基本上在用户名中间的空格是用户有意留下的
+			 * 	如果用户名中间的空格也有用户无意留下的，那真的没辙了
+			 */
+			
+			//删除用户名前面的空格
+			//str = str.replace(/^\s*/g,"");
+			
+			//删除用户名后面的空格
+			//str = str.replace(/\s*$/g,"");
+			
+			//或者合在一起写也行
+			str = str.replace(/^s*|\s*$/g,"");
+			alert("你的用户名是"+str);
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

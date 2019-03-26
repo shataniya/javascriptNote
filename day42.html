@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			//创建一个person类
+			function Person(name , age){
+				this.name = name;
+				this.age = age;
+			}
+			Person.prototype.toString = function(){
+				console.log("person(name = "+this.name+" , age = "+this.age);
+			}
+			
+			//创建对象
+			var per1 = new Person("李四",21);
+			var per2 = new Person("老板",28);
+			var per3 = new Person("张三",8);
+			var per4 = new Person("小明",19);
+			var per5 = new Person("柯南",9);
+			
+			//创建数组来保存这些人物
+			var perArr = [per1,per2,per3,per4,per5];
+			
+			//创建以个新的数组来保存年龄大于18的人物
+			function adultArr(arr){
+				//创建新的数组来保存age大于18的人物
+				var newarr = [];
+				//筛选age大于18的人物
+				for(var i=0 ; i<arr.length ; i++){
+					if(arr[i].age >= 18){
+						newarr.push(arr[i]);
+						//newarr.unshift(arr[i]);
+					}
+				}
+				
+				//把数组返回
+				return(newarr);
+			}
+			
+			//检验
+			var result = adultArr(perArr);
+			//console.log(result);
+			
+			//输出
+			for(var i=0 ; i<result.length ; i++){
+				console.log(result[i]);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

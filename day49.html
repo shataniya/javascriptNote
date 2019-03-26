@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 * Date对象
+			 * 		在JS中使用Date来表示一个时间
+			 */
+			
+			//创建一个Date对象
+			//如果直接使用构造函数创建一个Date对象,则会封装为当前代码执行时的时间
+			var d = new Date();//这行代码执行的时间(时刻)
+			
+			//创建一个指定的时间对象
+			//需要在构造函数中传递一个表示时间的字符串作为参数
+			//日期的格式:月/日/年/ 时:分:秒 -->创建一个指定的日期
+			var d2 = new Date("12/05/2019 8:10:30");
+			
+			/* 
+			 *	getDate()
+			 * 		返回当前日期的天数//如果是18日，就返回18
+			 * 
+			 * 	getDay()
+			 * 		返回当前日期的星期//如果是星期五，就返回5
+			 * 		注意的是，0表示的是周日，因为老外认为周日是第一天
+			 * 
+			 * 	getMonth()
+			 * 		返回当前日期的月份
+			 * 		会返回0~11的值
+			 * 		所以要加1，真正的月份
+			 * 
+			 * 	getFullYear()
+			 * 		返回当前日期的年份
+			 * 
+			 * 	getHours()//返回当前日期的 时
+			 * 	getMinutes()//返回当前日期的 分
+			 * 	getSeconds()//返回当前日期的 秒
+			 * 
+			 * 	getTime()
+			 * 		就是格林威治时间01/01/1970 0:0:0到当前日期（或者指定日期）的毫秒数
+			 */
+			
+			var day = d.getDate();//返回d时间的天数
+			console.log("day = "+day);//18
+			var week = d2.getDay();
+			console.log("week = "+week);
+			var month = d2.getMonth()+1;
+			console.log("month = "+month);
+			var year = d2.getFullYear();
+			console.log("year = "+year);
+			var hour = d2.getHours();
+			console.log("hour = "+hour);
+			var min = d2.getMinutes();
+			console.log("min = "+min);
+			var sec = d2.getSeconds();
+			console.log("sec = "+sec);
+			//console.log(d2);
+			
+			var time = d.getTime();
+			var time1 = d2.getTime();
+			//console.log(time);
+			//console.log(time1);
+			time = Date.now();//Date.now()获取这行代码执行时的时间戳
+			//console.log(time);
+			
+			var time1 = Date.now();
+			for(var i=0 ; i<1000000 ; i++);
+			var time2 = Date.now();
+			
+			time = time2 - time1;
+			console.log(time);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

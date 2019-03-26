@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			我们可以在事件对应的属性中，设置一些JS代码
+				这样当事件触发时，这些代码也会被执行
+			
+			onclick
+				点击一次的时候就会执行
+				
+			ondblclick
+				点击2次的时候就会执行
+				
+			onmousemove
+				当鼠标靠近的时候就会执行
+				
+		 
+		 -->
+		<!-- <button id="btn" onmousemove="alert('点我干嘛~~~!');">我是一个按钮</button> -->
+		<!-- 
+			这种写法我们叫做结构行为耦合，不方便维护，不推荐使用
+		 
+		 -->
+		<button id="btn">我是一个按钮</button>
+		<script type="text/javascript">
+			
+			/* 
+			 *	事件 就是用户与浏览器之间的交互行为
+			 * 		比如：点击按钮，鼠标移动，关闭窗口等等
+			 * 	那怎么处理一个事件？？
+			 */
+			
+			
+			//获取按钮对象
+			var btn = document.getElementById("btn");
+			//console.log(btn);
+			
+			/* 
+			 *	可以为按钮的对应事件绑定处理函数的形式来响应事件
+			 */
+			
+			//绑定一个单击事件,就是给对象添加属性
+			btn.onclick = function(){
+				alert("你是不是傻~~~");
+			};//这里最好不要忘了逗号
+			//像这种为单击事件绑定的函数,我们叫做单击相应函数
+			//当时间出发的时候,函数才执行
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="input-area">
+			<div class="input-flags">
+				<div class="input-ok" data-bind="visible: nicknameStatus() === 1"></div>
+			</div>
+			<label class="input-placeholder" id="nickname-tips" for="nickname" data-bind="visible: nickname().length == 0">昵称</label>
+			<div class="input-outer">
+				<input autocomplete="off" type="text" id="nickname" class="nickname" maxlength="24" data-bind="textInput: nickname, event: {blur:checkDirtyNickname,focus:onNicknameFocus}, css:{error: typeof nicknameStatus() == 'string'}" tabindex="3">
+			</div>
+			<div class="error-tips-wrap" data-bind="css:{slideup:nicknameTips().length === 0}">
+				<div class="error-tips" data-bind="text: nicknameTips, visible: nicknameTips().length"></div>
+			</div>
+		</div>
+		<div class="input-area">
+			<label class="input-placeholder" id="password-tips" for="password" data-bind="visible: password().length == 0">密码</label>
+			<div class="input-flags">
+				<div class="input-ok" data-bind="visible:passwordStatus() === 1"></div>
+				<div href="javascript:void(0)" class="eye" data-bind="event:{mousedown:function(){$root.show_password(true)},mouseup:function(){$root.show_password(false)},mouseleave:function(){$root.show_password(false)}},visible:password().length > 0,css:{close:!show_password()}" title="长按显示密码"></div>
+			</div>
+			<div class="input-outer">
+				<div class="password-raw" data-bind="text: password, visible: show_password()"></div>
+				<input autocomplete="off" type="password" id="password" class="password" maxlength="16" data-bind="textInput: password, event: {blur:checkPassword,focus:onPasswordFocus}, css:{error:typeof passwordStatus() === 'string'}, hasFocus:passwordFocus" tabindex="4">
+			</div>
+			<div class="password-tips-group" data-bind="css:{slideup:!passwordFocus()}">
+				<div class="password-tips" data-bind="css:{ok:!passwordHasBlank()}">不能包括空格</div>
+				<div class="password-tips" data-bind="css:{ok:!passwordBadLength()}">长度为8-16个字符</div>
+				<div class="password-tips" data-bind="css:{ok:!passwordSimple()}">必须包含字母、数字、符号中至少2种</div>
+			</div>
+			<div class="error-tips-wrap" data-bind="css:{slideup:passwordTips().length === 0}">
+				<div class="error-tips" data-bind="text: passwordTips, visible: passwordTips().length"></div>
+			</div>
+		</div>
+	</body>
+</html>

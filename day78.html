@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title><script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+				 *	读取样式表中的样式的时候，有两种方法
+				 * 		getComputedStyle和currentStyle
+				 *	getComputedStyle方法IE8以上的浏览器，正常浏览器都可以使用，例如火狐，谷歌什么的
+				 * 		但是这些浏览器都不能识别使用currentStyle方法
+				 * 	currentStyle方法IE8及以下的浏览器可以使用，但是不能识别使用getComputedStyle
+				 * 	于是必须定义一个函数getStyle使得无论哪个浏览器都能读取样式表的样式
+				 *
+				 */
+				
+				function getStyle(obj , name){
+					
+					/* 
+					 *	因为不能识别浏览器的版本，种类，所以可以通过检验有没有getComputedStyle函数来
+					 * 	确定浏览器的版本，种类，
+					 * 		如果有getComputedStyle函数，说明是正常浏览器
+					 * 		如果没有getComputedStyle函数，说明是IE8及以下浏览器
+					 */
+					
+					/* 
+					 *	这里用window的原因是
+					 * 		如果不用window，getComputedStyle就是一个变量，如果没有这个变量，浏览器就会
+					 * 			返回NaN，就会发生错误，这个错误主要是对IE8来说的
+					 * 		如果加了window，getComputedStyle就是window里的一个属性，如果没有这个属性，会
+					 * 			返回undefined,而undefined转换成布尔值就是false，就达到了识别浏览器版本的目的
+					 */
+					if(window.getComputedStyle){
+						return(getComputedStyle(obj,null)[name]);
+					}else{
+						return(obj.currentStyle[name]);
+					}
+					
+				};
+				
+				var box1 = document.getElementById("box1");
+				
+				console.log(getStyle(box1,"width"));//这里width用字符串形式
+				
+				//建议用getComputedStyle,让getComputedStyle的优先级比currentStyle高
+				//从而达到统一的目的
+								
+			}
+			
+		</script>
+		<style type="text/css">
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+	</body>
+</html>

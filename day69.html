@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+				 *	点击超链接以后删除一个员工的信息
+				 * 
+				 */
+				var employeeTabel = document.getElementById("employeeTabel");
+				//获取所有的超链接
+				var allA = document.getElementsByTagName("a");
+				for(var i=0 ; i<allA.length ; i++){
+					//console.log(allA[i].parentNode.parentNode);
+					allA[i].onclick = function(){
+						
+						//点击超链接就删除超链接那一行
+						//响应函数里边的this就是绑定的对象
+						//点击哪个超链接,this就是谁
+						var tr = this.parentNode.parentNode;
+						tr.parentNode.removeChild(tr);
+						
+						/* 
+						 *	点击超链接会跳转页面，这是超链接的默认行为
+						 * 	但是此时不希望出现这个默认行为，于是要取消这个默认行为
+						 * 	可以通过在响应函数的最后添加return false来取消默认行为
+						 * 
+						 */
+						return(false);//取消默认行为,取消跳转页面的行为
+					}
+				}
+				
+				//点击submit之后添加填入的信息
+				 var addEmpButton = document.getElementById("addEmpButton");
+				 addEmpButton.onclick = function(){
+					 
+					 
+					 var tr = document.createElement("tr");
+					 var td1 = document.createElement("td");
+					 var td2 = document.createElement("td");
+					 var td3 = document.createElement("td");
+					 var td4 = document.createElement("td");
+					 //var text01 = document.createTextNode(empName);
+					 //获取用户填写的信息
+					 //获取员工的Name
+					 var empName = document.getElementById("empName").value;
+					 //文本框的内容就是input的value属性
+					 //把获取的Name添加到<td>标签中
+					 td1.innerHTML = empName;
+					 //td1.appendChild(text01);
+					 tr.appendChild(td1);
+					 //employeeTabel.appendChild(tr);
+					 
+					 //获取员工的email
+					 var email = document.getElementById("email").value;
+					 //alert(email);
+					 td2.innerHTML = email;
+					 tr.appendChild(td2);
+					 
+					 //获取员工的薪水
+					 var salary = document.getElementById("salary").value;
+					 //alert(salary);
+					 td3.innerHTML = salary;
+					 tr.appendChild(td3);
+					 
+					 //添加超链接
+					 var a = document.createElement("a");
+					 a.innerHTML = "Detele";
+					 a.href = "javascript:;";
+					 
+					 td4.appendChild(a);
+					 tr.appendChild(td4);
+					 
+					 //在employeeTabel里添加子节点tr
+					 employeeTabel.appendChild(tr);
+					 
+					 a.onclick = function(){
+						 var tr = this.parentNode.parentNode;
+						 tr.parentNode.removeChild(tr);
+						 return(false);
+					 }
+					 
+				 }
+				
+				
+				
+			}
+			
+		</script>
+		
+		<style type="text/css">
+			
+			#employeeTabel{
+				text-align: center;
+			}
+			
+			/* #formDiv{
+				text-align: center;
+			} */
+			
+		</style>
+	</head>
+	<body>
+		
+		<table id="employeeTabel">
+			
+			<tr>		
+				<th>Name</th>
+				<th>Email</th>
+				<th>Salary</th>
+				<th>&nbsp;</th>				
+			</tr>
+			<tr>
+				<td>张三</td>
+				<td>zhangsan@sina.com</td>
+				<td>6000</td>
+				<td>
+					<a href="deleteEmp?id=001">Delete</a>
+				</td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>lisi@sina.com</td>
+				<td>10000</td>
+				<td>
+					<a href="deleteEmp?id=002">Delete</a>
+				</td>
+			</tr>
+			<tr>
+				<td>王五</td>
+				<td>wangwu@sina.com</td>
+				<td>8000</td>
+				<td>
+					<a href="deleteEmp?id=003">Delete</a>
+				</td>
+			</tr>
+		</table>
+		
+		<div id="formDiv">
+			
+			<h4>添加新员工</h4>
+			
+			<table>
+				<tr>
+					<td class="word">name:</td>
+					<td class="inp">
+						<input type="text" name="empName" id="empName" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">email:</td>
+					<td class="inp">
+						<input type="text" name="email" id="email" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">salary:</td>
+					<td class="inp">
+						<input type="text" name="salary" id="salary" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button id="addEmpButton" value="abc">
+							Submit
+						</button>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+	</body>
+</html>

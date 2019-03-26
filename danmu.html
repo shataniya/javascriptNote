@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//var box1 = document.getElementById("box1");
+				var btn01 = document.getElementById("btn01");
+				var btn02 = document.getElementById("btn02");
+				var bo = document.getElementById("bo");
+				bo.style.offsetWidth = 0 + "px";
+				
+				//console.log(document.body.clientWidth - box1.offsetWidth);
+				
+				//设置按钮位置
+				btn01.style.left = document.body.clientWidth/2 - btn01.clientWidth + "px";
+				//btn01.style.top = document.body.clientHeight - btn01.clientHeight + "px";
+				btn02.style.left = document.body.clientWidth/2 + "px";
+				
+				//向右的弹幕
+				function danmuright(obj){
+					
+					var name = document.getElementById(obj[name]);
+					name.style.marginLeft = 0 - name.offsetWidth + "px";
+					console.log(name.style.marginLeft);
+					
+					var timer;
+					//点击开始弹幕按钮
+					btn01.onclick = function(){
+						
+						clearInterval(timer);
+						var count = 0;
+						timer = setInterval(function(){
+							//每0.05s向右移动20个像素
+							count++;
+							name.style.marginLeft= count*20 - name.offsetWidth + "px";
+							if(parseInt(name.style.marginLeft) >= document.body.clientWidth){
+								count = 0;
+								//console.log(name.style.marginLeft);
+							}
+							
+							
+						},50);
+						//return(false);
+					};
+					
+					//点击停止弹幕按钮
+					btn02.onclick = function(){
+						clearInterval(timer);
+					};
+					
+				};
+				
+				//向左的弹幕
+				function danmuleft(obj){
+					
+					obj.style.marginLeft = 0 - obj.offsetWidth + "px";
+					console.log(obj.style.marginLeft);
+					
+					var timer;
+					//点击开始弹幕按钮
+					btn01.onclick = function(){
+						
+						clearInterval(timer);
+						var count = 0;
+						timer = setInterval(function(){
+							//每0.05s向左移动20个像素
+							count++;
+							obj.style.marginLeft= document.body.clientWidth -  count*20 + "px";
+							if(parseInt(obj.style.marginLeft) <= - obj.offsetWidth){
+								count = 0;
+							}
+							
+							
+						},50);
+					};
+					
+					//点击停止弹幕按钮
+					btn02.onclick = function(){
+						clearInterval(timer);
+					};
+					
+				};
+				
+				//创建一个类DanMu
+				function DanMu(name,str,size,top,color){
+					this.name = name;
+					this.str = str;
+					this.size = size;
+					this.top = top;
+					this.color = color;
+					//同时创建一个div
+					var bo = document.getElementById("bo");
+					var div = document.createElement("div");
+					div.id = this.name;
+					div.innerHTML = str;
+					div.style.color = this.color;
+					div.style.fontSize = size + "px";
+					div.style.top = top + "px";
+					div.style.whiteSpace = "nowrap";
+					div.style.fontFamily = "simhei,arial,helvetica,sans-serif";
+					div.style.fontWeight = "bold";
+					div.style.position = "absolute";
+					bo.appendChild(div);
+				}
+				
+				//danmuleft(box1,"我爱你一生一世",100,100);
+				//var box1 = new DanMu(box1,"亲爱的嫁给我吧",100,100,"aqua");
+				var box2 = new DanMu(box2,"爱你一万年",80,150,"red");
+				//console.log(box2);
+				danmuright(box2);
+					
+			};
+			
+		</script>
+		<style type="text/css">
+			
+			#bo{
+				/* position: fixed; */
+				white-space: ;
+				/* background-color: aqua; */
+				overflow: hidden;
+			}
+			
+			
+			#btn01{
+				position: absolute;
+			}
+			#btn02{
+				position: absolute;
+			}
+					
+		</style>
+	</head>
+	<body id="bo">
+		<button id="btn01">开始弹幕</button>
+		<button id="btn02">停止弹幕</button>
+	</body>
+</html>

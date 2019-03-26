@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *强制类型转换，就是把一个数据类型转换成其他数据类型
+			 * 其他数据类型转换成String
+			 * 方法一：
+			 *       调用被转换数据类型的toString();
+			 * 但要注意的是，null,undefined没有toString()方法
+			 *方法二：
+			 *       调用String()函数
+			 * null,undefined转换成字符串
+			 * 
+			 * 将其他数据类型转换成Number
+			 * 记住没有toNumber()方法
+			 * 方法：
+			 *     使用Number()函数
+			 * 字符串--->数字
+			 * 如果是纯数字的字符串，那么直接转换成数字；
+			 * 如果字符串中含有非数字的内容，则结果为NaN
+			 * 布尔值--->数字
+			 * true--->1，false--->0
+			 * 空格或者空格串--->0
+			 * null--->0
+			 * undefined--->NaN
+			 * 
+			 * 转换方式二：
+			 *          parseInt()函数
+			 * parseInt()可以把字符串里有效的数字取出来,只取前面有效的数字
+			 * 
+			 * parseFloat()可以处理小数
+			 * 对于非string，先转换成stirng,在进行parseInt(),parseFloat();
+			 * parseInt()还用拥有取整的效果
+			 * 
+			 */
+			var a = null;
+			var b = "123.456px";
+			a = parseFloat(b);
+			//调用a的toString()方法;
+			//a.toString();
+			// var b = a.toString();
+			var c = String(a);
+			console.log(typeof a);
+			console.log(a);
+			//console.log(typeof b);
+			//console.log(b);
+			console.log(typeof c);
+			console.log(c);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

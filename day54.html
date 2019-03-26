@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	正则表达式
+			 * 		1.可以用创建对象的方法来创建正则表达式
+			 * 			例如：
+			 * 			var reg = new RegExp();
+			 * 		2.可以用字面量来创建正则表达式
+			 * 			语法：
+			 * 				var 变量 = /正则表达式/匹配模式
+			 * 			语法中的正则表达式不用加引号，因此它不是字符串
+			 */
+			
+			//var reg = new RegExp("a","i");
+			//console.log(reg.test("abc"));//true
+			
+			//用字面量来定义正则表达式
+			var reg = /a/i;
+			//console.log(reg.test("acb"));//true
+			//console.log(typeof reg);//object
+			
+			//创建一个正则表达式来检查字符中是否含有a或b或c
+			//reg = /a|b|c/i;//引用|表示或
+			
+			reg = /[abc]/i;//中括号里边也表示或
+			
+			reg = /[a-z]/i;//用 - 表示从什么到什么
+			//这里表示所有小写或大写字母
+			
+			reg = /[A-z]/;//表示所有字母
+			
+			//检查一个字符串中管是否含有abc或adc或aec
+			reg = /a[bde]c/;
+			
+			//[^]-->除了
+			reg = /[^1254]/;
+			
+			console.log(reg.test("121523"));
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

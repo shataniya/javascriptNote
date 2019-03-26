@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			for(var i=1 ; i<=9 ; i++){
+				for(var j=1 ; j<=i ; j++){
+					document.write("<span>"+j+" * "+i+" = "+i*j+"</span>");
+				}//&nbsp;是用来在面板上写空格的,为字符和字符之间拉开空间的
+				document.write("<br />");
+			}
+		</script>
+		<!-- //设置输出样式，要借用style -->
+		<style type="text/css">
+			body{
+				width: 2000px;//设置宽度2000像素,这样就会出现滚动条了
+			}
+			span{
+				display: inline-block;
+				width: 80px;//80像素
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			/* 
+			 *	search()
+			 * 		类似于index()方法
+			 * 		可以搜索字符中是否含有指定内容
+			 * 			如果搜索到指定内容，返回第一次出现的索引
+			 * 			如果没有搜索到，返回-1
+			 * 		可以接受正则表达式作为参数，然后会根据正则表达式去检索字符串
+			 * 		默认情况下只会查找第一个
+			 * 		
+			 */
+			var str = "s6efsf4s68fs6v5S8EF46SE84F6SE14VF54";
+			var result = str.search("ll");
+			
+			//如果我想搜索字符串中是否含有abc或afc或aec
+			result = str.search(/a[bfe]c/);
+			
+			/* 
+			 *	match()
+			 * 		可以根据正则表达式，从一个字符串中将符合条件的内容提取出来
+			 * 		默认情况下，计算机找到第一个就不干了，罢工了
+			 * 		这种情况下需要将匹配模式改成全局模式
+			 * 		可以为正则表达式设置多个匹配模式，顺序随意，ig或gi都行
+			 * 	match()会将匹配到的内容封装到一个数组里并返回这个数组，即使只查询到一个结果
+			 */
+			result = str.match(/[a-z]/ig);
+			
+			//console.log(result);
+			//console.log(typeof result);//object
+			//console.log(Array.isArray(result));//true
+			//说明返回的是一个数组
+			//console.log(result[2]);//f
+			
+			/* 
+			 *	replace()
+			 * 		可以将字符串中指定的内容替换为新的内容
+			 * 		需要两个参数：
+			 * 			1.被替换的内容
+			 * 			2.新的内容
+			 * 		默认只会替换第一个,因此把匹配模式设置成全局模式--->g
+			 * 
+			 * 
+			 */
+			//var str = "s6efsf4s68fs6v5S8EF46SE84F6SE14VF54";
+			result = str.replace(/[a-z]/ig,"");
+			//用空串替换可以把所有数字或者字母单方面全部取出
+			//console.log(result);
+			//console.log(Array.isArray(result));//false
+			//注意它不是数组,是字符串
+			//console.log(typeof result);//string
+			
+			/* 
+			 *	split()
+			 * 	默认是全部拆分，因此在使用正则表达式的时候可以不用全局模式
+			 * 
+			 */
+			
+			//var str = "s6efsf4s68fs6v5S8EF46SE84F6SE14VF54";
+			result = str.split(/f/ig);
+			console.log(result);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

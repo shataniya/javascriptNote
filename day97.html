@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 
+					setTimeout()
+				 *		延时调用不会马上执行,而是隔一段时间以后执行，而且只会执行一次
+				 * 	延时调用和定时调用实际上是可以互相代替的
+				 * 
+				 * 	在开发中会更多的使用定时调用
+				 * 
+				 * 	clearTimeout()
+				 * 		使用clearTimeout()来关闭setTimeout()的延时调用
+				 */
+				var num = 1;
+				setTimeout(function(){
+					console.log(num++);
+				},3000);
+				
+				
+			};
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

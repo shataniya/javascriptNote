@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *JS数据类型：
+			 *  - string 字符串
+			 *  - number 数值
+			 *  - boolean 布尔值
+			 *  - null 空值
+			 *  - undefine 未定义
+			 *  - object 对象
+			 * 
+			 * object属于一种复合的数据类型
+			 * 在object中可以保存多个不用的数据类型
+			 * 
+			 * 对象的分类：
+			 * 1.内建对象
+			 * 例如：math string number boolean ...
+			 * 2.宿主对象//由浏览器，开发环境提供
+			 * BOM DOM
+			 * 3.自建对象//自定义对象
+			 * 
+			 */
+			//创建对象
+			/*
+			 *使用关键字new调用的函数,是构造函数constractor
+			 * 构造函数是专门用来创建对象的函数
+			 */
+			var obj = new Object();//使用new创建
+			//在对象中保存的值称为属性
+			//现在向对象中添加属性
+			/*
+			 *语法：
+			 * 对象.属性名 = 属性值
+			 */
+			//现在向obj中添加"name"属性
+			obj.name = "张三";
+			//添加gender属性
+			obj.gender = "男";
+			//添加age属性
+			obj.age = "18";
+			/*
+			 *读取对象中的属性
+			 *语法：对象.属性 
+			 * 
+			 * 修改对象的属性值
+			 * 语法：对象.属性 = 新值
+			 * 
+			 * 删除对象的属性
+			 * 语法：delete 对象.属性
+			 */
+			obj.name = "李白";
+			delete obj.name;
+			console.log(obj.name);
+			console.log(typeof obj);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

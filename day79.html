@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				var box1 = document.getElementById("box1");
+				var btn01 = document.getElementById("btn01");
+				var box4 = document.getElementById("box4");
+				
+				
+				btn01.onclick = function(){
+					
+					/* 
+					 *	clientWidth ---> 元素的可见宽度
+					 * 		返回值不带px，可以用于直接计算
+					 * 		会获取元素的宽度，包括内容区和内边距
+					 * 	clientHeight ---> 元素的可见宽度
+					 * 		返回值不带px，可以用于直接计算
+					 * 	这两个属性都是只读的，不能修改
+					 */
+					//alert(box1.clientWidth);//120
+					//box1.clientWidth = "300px";//不能修改
+					
+					/* 
+					 *	offsetWidth
+					 * 		返回元素的宽度，包括内容区，边距，边框
+					 * 	offsetHeight
+					 * 		返回元素的高度，包括内容区，边距，边框
+					 */
+					//alert(box1.offsetWidth);//140
+					/* 
+					 *	可以看见offsetWidth加上了边框
+					 */
+					
+					/* 
+					 *	offsetParent
+					  * 	可以获取当前元素的定位父元素
+					  * 	它获取到离当前元素最近的开了定位的祖先元素
+					 */
+					var op = box1.offsetParent;
+					//alert(op.id);//box2
+					//如果box2关了定位,就去找box3,如果都没有开定位,就返回body
+					
+					/* 
+					 *	offsetLeft
+					 * 		当前元素相对于其定位元素的水平偏移量
+					 * 	offsetTop
+					 * 		当前元素相对于其定位元素的垂直偏移量
+					 * 	这个定位元素就是offsetParent
+					 */
+					//alert(box1.offsetLeft);//8
+					/* 
+					 *	因为没有给box2和box3开启定位，所以box1找定位元素的时候实际上找的是
+					 * 	body，可以看见图中方块区域的左侧有一个空白，那个空白就是8px，所以
+					 * 	返回的是8
+					 */
+					alert(box1.offsetLeft);//0
+					/* 
+					 *	在没有个box2添加样式之前，可以看见box1的水平偏移量是0
+					 */
+					/* 
+					 *	给box2添加了边距为100px的样式之后，可以看见box1的水平偏移量是100px
+					 */
+					
+					/* 
+					 *	
+					 */
+					
+					//获取box4的高度,可见高度,用clientHeight
+					//alert(box4.clientHeight);//300
+					
+					//获取box4的滚动高度,用scrollHeight,可以获取子元素整个滚动区域的高度
+					//alert(box4.scrollHeight);//600
+					//把box5的宽度改为450px之后,可以看见出现了两个滚动条
+					//获取box4的滚动宽度,用scrollwidth,可以获得子元素的整个滚动区的宽度
+					//alert(box4.scrollWidth);//450
+					
+					
+					/* 
+					 *	scrollLeft
+					 * 		获取的是水平滚动条滚动的距离
+					 * 	scrollTop
+					 * 		获取的是垂直滚动条滚动的距离
+					 */
+					//alert(box4.scrollLeft);//获取的是滚动条滚动的距离
+					//alert(box4.scrollTop);//117
+					
+					/* 
+					 *	当满足scrollHeight - scrollTop == clientHeight
+					 * 		说明垂直滚动条已经滚到底了
+					 * 	当满足scrollWidth - scrollLeft == clientWidth
+					 * 		说明水平滚动条已经滚到底了
+					 */
+					
+					
+				}
+				
+			};
+			
+			
+		</script>
+		
+		<style type="text/css">
+			#bnt01{
+				
+			}
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				padding: 10px;/* 边距10 */
+				border: 10px solid yellowgreen;/* 边框10 */
+			}
+			
+			#box2{
+				padding: 100px;/* 边距是100px */
+				background-color: aqua;
+			}
+			
+			#box4{
+				width: 200px;
+				height: 300px;
+				background-color: aqua;
+				/* overflow: hidden; */
+				/* 如果使用overflow:hidden，那么会把溢出的部分给切掉了 */
+				overflow: auto;
+				/* 如果用overflow:auto，会出现一个滚动条 */
+				/* 这是重点，以后制作滚动条可以使用overflow的auto属性 */
+				
+				
+			}
+			
+			#box5{
+				/* width: 150px; */
+				width: 450px;
+				height: 600px;
+				/* 因为box5的height的值是600px,而box4的height的值是300px，所以
+				 *	box5从box4溢出了
+				 *
+				 *
+				 */
+				background-color: yellow;
+			}
+			
+		</style>
+		
+		
+	</head>
+	<body>
+		<button id="btn01">点我</button>
+		<br /><br />
+		<div id="box4">
+			<div id="box5"></div>
+		</div>
+		<br /><br />
+		<div id="box3">
+			<div id="box2" style="position: relative;">
+				<!-- 
+					position是位置，或者是定位
+						值是relative，意思是相对定位
+						
+				-->
+				<div id="box1"></div>
+			</div>
+		</div>
+	</body>
+</html>

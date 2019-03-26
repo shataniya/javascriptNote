@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				/* 	目标:
+				 *	让div跟随鼠标移动
+				 */
+				//获取box1
+				var box1 = document.getElementById("box1");
+				document.onmousemove = function(event){
+					//解决兼容问题
+					event = event || window.event;
+					
+					//获取鼠标坐标
+					//var x = event.clientX;
+					//var y = event.clientY;
+					/* 
+					 *	clientX和clientY
+					 * 		用于获得鼠标在当前的可见窗口的坐标
+					 * 	div的偏移量，是相对于整个页面的
+					 */
+					//可以使用相对于页面的坐标pageX和pageY
+					/* 
+					 *	但是pageX和pageY这两个属性在IE8不能使用，如果考虑到兼容性问题，就
+					 * 	不要使用
+					 */
+					/* var x = event.pageX;
+					var y = event.pageY; */
+					
+					//	chrome认为滚动条是body的,而火狐认为滚动条是html的
+					/* var x1 = document.body.scrollLeft;
+					var y1 = document.body.scrollTop; */
+					
+					//documentElement可以认为是html
+					/* var x1 = document.documentElement.scrollLeft;
+					var y1 = document.documentElement.scrollTop; */
+					
+					//为了处理兼容性问题,我们将这两个联合在一起
+					var x1 = document.body.scrollLeft || document.documentElement.scrollLeft;
+					var y1 = document.body.scrollTop || document.documentElement.scrollTop;
+					
+					var x = event.clientX+x1;
+					var y = event.clientY+y1;
+					
+					//设置div的偏移量,注意要记得添加单位px
+					box1.style.left = x+"px";
+					box1.style.top = y+"px";
+					
+				};
+				
+				/* var box2 = document.getElementById("box2");
+				box2.onmousemove = function(event){
+					
+					event = event || window.event;
+					event.cancelBubble = true;
+					
+				} */
+				
+			}
+			
+		</script>
+		
+		<style type="text/css">
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				/* 
+				 *	开启box1的绝对定位
+				 *		想让box1动起来的话，要开启box1的绝对定位
+				 */
+				position: absolute;/* 一般情况下是绝对定位，开启相对定位，固定定位也行 */
+				
+			}
+			
+			
+		</style>
+		
+	</head>
+	<body style="height: 1000px;width: 1000px;">
+		<div id="box2" style="width: 300px;height: 600px;background-color: royalblue;"></div>
+		<div id="box1"></div>
+	</body>
+</html>

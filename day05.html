@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *typeof的结果是string类型的
+			 * 运算符
+			 * +,-,/,*,%
+			 * null,undefined---->Number,结果都是NaN
+			 * NaN和任何数运算结果都是NaN
+			 * 
+			 * 注意：
+			 * 任何非Number值和Number进行加法，都会先转换成Number值，然后再相加，除了字符串
+			 * 
+			 * 对于boolean值：
+			 * true--->1  false--->0
+			 * 
+			 * 任何值和字符串进行加法时，都会先变成字符串，然后在进行拼接的操作
+			 * 
+			 * 通过加法可以把Number转化成字符串，通过减法可以把字符串转化成Number
+			 * 例如：
+			 * var a = 123;
+			 * a = a + "";//a从Number--->字符串
+			 * 
+			 * var b = "123";
+			 * b = b - 0;//a从字符串--->Number
+			 * 
+			 * 除了加法运算，剩下的运算都是先将非Number的值转换成Number值，然后进行运算
+			 * 
+			 * 
+			 */
+			var c = "123";
+			c = c - 0;
+			console.log(typeof c);
+			console.log(c);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

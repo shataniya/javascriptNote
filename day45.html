@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			var arr = ["孙悟空","猪八戒","沙和尚","唐三藏","白骨精"];
+			
+			/* 
+			 *	slice();
+			 * 		可以用来从数组中提取指定元素
+			 *		该方法不会改变原数组，只会把截取的数组作为函数返回值
+			 * 		参数：
+			 * 			1.截取开始位置（包含）
+			 * 			2.截取结束位置（不包含）
+			 * 				第二个参数可以不写，表示从截取开始位置一直往后都截取
+			 * 				第二个参数也可以是负数，负几表示倒数第几位，然后往前截取
+			 * 		语法：数组.slice(参数1,参数2);
+			 */
+			var newarr = arr.slice(2,-1);
+			console.log(newarr);
+			console.log(arr);
+			
+			/* 
+			 *splice()
+			 *	删除数组中的指定元素
+			 * 	splice()会影响原数组，并将删除掉元素作为返回值返回
+			 * 	参数：
+			 * 		1.参数开始的位置（索引）
+			 * 		2.删除的长度（数量）
+			 * 		3.第三参数个及以后，都会插入到数组前边//有替换元素的效果
+			 */
+			newarr = arr.splice(1,2,"牛魔王","铁扇公主");
+			console.log(arr);
+			console.log(newarr);
+			
+			var arr1 = [1,2,2,2,3,3,3,2,5];
+			for(var i=0 ; i<arr1.length ; i++){
+				for(var j=i+1 ; j<arr1.length ; j++){
+					//如果后面的与前面的相同,就删除后面的数字
+					if(arr1[i] == arr1[j]){
+						arr1.splice(j,1);//把后面重复的删除掉
+						j--;
+					}
+				}
+			}
+			console.log(arr1);
+			
+			//splice()可以消除数组后边重复的数字
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

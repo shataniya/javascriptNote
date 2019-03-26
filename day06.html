@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 *自增 ++
+			 * ++a a++都是自增，都让a增加1
+			 * 但是++a == a + 1  a++ == a
+			 * a++ ++a的结果不同，a++自增以前的值，++a是自增以后的值
+			 * 
+			 * JS逻辑运算符：
+			 * 
+			 * !---->非
+			 * 对于非布尔值，先转换成布尔值然后进行非运算，运用这一点可以将任意数值转换成布尔值
+			 * 例如：
+			 * var a = "hello";
+			 * a = Boolean(a);
+			 * //或者 a = !!a;
+			 * 
+			 * &&--->与
+			 * 非布尔值的与运算，有以下几种情况：
+			 * 情况一：
+			 * 如果是 true && true,则返回第二个值
+			 * 如果是 ture && false,则返回第二个值
+			 * 如果是 false && true/false,直接返回第一个值
+			 * 综合就是：如果第一个值是 true,则直接返回第二个值
+			 *          如果第一个值是 false,则直接返回第一个值
+			 * ||--->或
+			 * 非布尔值的或运算，综合就是：
+			 * 如果第一个值是 true,则返回第一个值
+			 * 如果第一个值是 false,则返回第二个值
+			 * 
+			 * 关系运算符，运算结果是true/false
+			 * > 大于
+			 * < 小于
+			 * >= 大于等于
+			 * <= 小于等于
+			 * 
+			 * 对于非数值和数值的比较，先把非数值转化成数值，在进行比较
+			 * 任何值和NaN比较，结果都是false
+			 * 对于两个字符串的比较，比较unicode编码
+			 * 
+			 * 
+			 */
+			var a = 1 > "0";
+			console.log(typeof a);
+			console.log(a);
+			false && alert("niaho");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
